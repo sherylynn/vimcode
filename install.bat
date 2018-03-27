@@ -41,6 +41,9 @@ call mklink /J "%HOME%\.vim" "%APP_PATH%\"
 IF NOT EXIST "%APP_PATH%\plugged" (
     call mkdir "%APP_PATH%\plugged"
 )
+::下载vim-plug
+call curl -fLo %USERPROFILE%/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 call proxy.bat
 call vim -c "GoInstallBinaries" -c "qa"
