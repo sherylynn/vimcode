@@ -1,0 +1,659 @@
+" Basics {
+set nocompatible        " Must be first line
+" }
+let $DOTFILE=expand("$HOME/vimcode")
+let $BUNDLE =expand("$DOTFILE/plugged")
+let $PLUG_DIR=expand("$DOTFILE/autoload")
+if empty(glob(expand("$PLUG_DIR/plug.vim")))
+  silent !curl -fLo $PLUG_DIR/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+source $PLUG_DIR/plug.vim
+" Windows Compatible {
+" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+" across (heterogeneous) systems easier.
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+  "禁用win下alt快捷键,只在gui下生效，不实用
+  set winaltkeys=no
+  " Be nice and check for multi_byte even if the config requires
+  " multi_byte support most of the time
+  if has("multi_byte")
+    " Windows cmd.exe still uses cp850. If Windows ever moved to
+    " Powershell as the primary terminal, this would be utf-8
+    set termencoding=cp850
+    " Let Vim use utf-8 internally, because many scripts require this
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    " Windows has traditionally used cp1252, so it's probably wise to
+    " fallback into cp1252 instead of eg. iso-8859-15.
+    " Newer Windows files might contain utf-8 or utf-16 LE so we might
+    " want to try them first.
+    set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15,chines
+    set guifont=Consolas:h12
+    "解决菜单乱码
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+    "解决consle输出乱码
+    language messages zh_CN.utf-8
+  endif
+endif
+" }
+
+call plug#begin(expand($BUNDLE))
+let mapleader = ' '
+let g:mapleader = ' '
+" Make sure you use single quotes
+Plug 'junegunn/vim-easy-align'
+" Plugin options
+Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+"浏览树
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"浏览树显示git状态插件
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-scripts/Tagbar'
+"Bundle 'minibufexpl.vim'
+
+"zencoding 改名为了 Emmet
+Plug 'https://github.com/luofei614/Emmet.vim'
+"模糊搜索软件
+if has('win32') || has('win64')
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'go build && mv ./main.exe ./bin/fzf.exe' }
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+endif
+Plug 'junegunn/fzf.vim'
+"国人出品 flygrep 功能类似the-silver-searcher
+Plug 'wsdjeg/flygrep.vim'
+Plug 'vim-scripts/WebAPI.vim'
+
+Plug 'vim-scripts/Gist.vim'
+
+"Plug 'tomasr/molokai'
+Plug 'lifepillar/vim-solarized8'
+"vscode dark
+"原作者的不能使用了 发现换一个人也不行 原来是colorschemey应该放外面
+"Plug 'tomasiser/vim-code-dark'
+Plug 'dunstontc/vim-code-dark'
+Plug 'dunstontc/vim-vscode-theme'
+"colorscheme dark_plus
+
+"bookmark  mm 添加书签,  mn 移动书签  mp 移动到前一个书签  ma 删除所有书签
+Plug 'MattesGroeger/vim-bookmarks'
+
+
+"Bundle 'JavaScript-syntax'
+Plug 'pangloss/vim-javascript'
+
+" jquery , angularjs 等语法
+Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+
+"css私有前缀
+Plug 'vim-scripts/prefixer.vim'
+"能缩减HTML代码
+Plug 'vim-scripts/xml.vim'
+"安装此插件解决macvim下没有加号寄存器的问题。
+Plug 'https://github.com/kana/vim-fakeclip.git'
+
+Plug 'terryma/vim-multiple-cursors'
+
+"snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'https://github.com/bonsaiben/bootstrap-snippets.git'
+
+Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'https://github.com/vim-airline/vim-airline-themes'
+
+Plug 'https://github.com/burnettk/vim-angular.git'
+
+"切换到 ale
+Plug 'w0rp/ale'
+"jsx插件
+Plug 'mxw/vim-jsx'
+"css color
+Plug 'ap/vim-css-color'
+" {}
+Plug 'jiangmiao/auto-pairs'
+"</>
+Plug 'alvan/vim-closetag'
+"beauty
+Plug 'vim-scripts/matchit.zip'
+"tern js 补全
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+"Go 插件
+Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
+"git 插件
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"增强了搜索，需要映射键位
+Plug 'haya14busa/incsearch.vim'
+"v模式下选词 +键扩展 -键缩减
+Plug 'terryma/vim-expand-region'
+"异步执行命令
+Plug 'skywind3000/asyncrun.vim'
+"编译任务插件
+Plug 'skywind3000/vimmake'
+Plug 'hsanson/vim-android'
+"Plug 'chemzqm/wxapp.vim'
+Plug 'posva/vim-vue'
+"微软typerscript支持，高亮
+Plug 'leafgarland/typescript-vim'
+"ts的功能插件
+Plug 'Quramy/tsuquyomi'
+"彩虹括号
+Plug 'luochen1990/rainbow'
+"markdown
+Plug 'tpope/vim-markdown',{'for':'markdown'}
+"markdown preview
+Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
+Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+"formate js
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+"中文排版规范化用法  :PanGu
+Plug 'hotoo/pangu.vim'
+func! PanGu_Full()
+  :call PanGuSpacing()
+  "段首加俩全角空格
+  :g!/^$/s/^/　　/
+endfunc 
+"异步补全，需要python3
+if has('python3')
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+  let g:deoplete#enable_at_startup = 1
+else
+  if has('job')||has('job_start')
+    "纯vimscript异步补全
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-buffer.vim'
+    Plug 'prabirshrestha/asyncomplete-file.vim'
+    Plug 'prabirshrestha/asyncomplete-gocode.vim'
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name':'buffer',
+    \ 'whitelist':['*'],
+    \ 'blacklist':['go'],
+    \ 'completor':function('asyncomplete#sources#buffer#completor'),
+    \ }))
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \  'name':'file',
+    \  'whitelist':['*'],
+    \  'priority':10,
+    \  'completor':function('asyncomplete#sources#file#completor')
+    \  }))
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
+    \  'name':'gocode',
+    \  'whitelist':['go'],
+    \  'completor':function('asyncomplete#sources#gocode#completor'),
+    \  'config':{
+    \    'gocode_path':expand('~/go/bin/gocode')
+    \  }
+    \  }))
+    "补全方式换异步
+    let g:asyncomplete_auto_popup =1
+    func! s:check_back_space() abort
+      let col = col('.') -1
+      return !col || getline('.')[col-1]=~ '\s'
+    endfunc
+    inoremap <silent><expr> <TAB>
+      \ pumvisible() ?"\<C-n>":
+      \ <SID>check_back_space() ? "\<TAB>":
+      \ asyncomplete#force_refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  else
+    Plug 'vim-scripts/AutoComplPop'
+    autocomplpop 设置
+    let g:AutoComplPop_IgnoreCaseOption=1
+    function! InsertTabWrapper()
+      let col=col('.')-1
+      if !col || getline('.')[col-1] !~ '\k'
+        return "\<TAB>"
+      else
+        return "\<C-x>\<C-o>"
+      endif
+    endfunction
+    "按tab键，全能提示，
+    "注意要用inoremap，不能用map！，如果用map！在命令模式下tab键没有提示功能。
+    inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
+    "shift+tab 展开代码片段
+    imap <S-TAB> <Plug>snipMateNextOrTrigger
+  endif
+endif
+
+call plug#end()
+
+"vimgrep查询时排除composer的vendor目录,排除前端bower和node的包文件目录,CommandT也不会查到他们
+set wildignore=vendor/**,bower_components/**,node_modules/**
+
+
+let g:used_javascript_libs = 'jQuery,AngularJS,AngularUI,RequireJS'
+
+set ignorecase
+
+let g:acp_behaviorKeywordCommand="\<C-n>"
+
+"设置NERDTreetagbar的宽度
+
+let g:NERDTreeWinSize = 20
+let g:tagbar_width=20
+"自动打开nerdtree
+"autocmd vimenter * NERDTree
+"彩虹括号开启
+let g:rainbow_active = 1  
+"颜色主题设置
+set background=dark
+colorscheme codedark
+let g:airline_theme='codedark'
+let g:tcc="codedark"
+" Allow to trigger colorscheme
+  function! ToggleCC() 
+    " Inversion 
+    if g:tcc== "solarized8" 
+      colorscheme codedark
+      let g:tcc="codedark"
+      let g:airline_theme='codedark'
+      echom g:tcc
+    elseif g:tcc== "codedark"
+      colorscheme solarized8
+      "let g:airline_theme='solarized'
+      "let g:airline_solarized_bg='light'
+      let g:tcc="solarized8"
+    endif 
+  endfunction 
+" Allow to trigger background 
+  function! ToggleBG() 
+    let s:tbg = &background 
+    " Inversion 
+    if s:tbg == "dark" 
+      set background=light 
+    else 
+      set background=dark 
+    endif 
+  endfunction 
+"是否支持真彩色
+if $COLORTERM == 'truecolor'
+  "设置终端真彩色
+  set termguicolors
+elseif has('win32') || has('win64')
+  set termguicolors
+  "设置256色
+  "似乎windows不安装ubuntu前是色不全，安装后色全了
+else
+  set t_Co=256
+endif
+map cbg :call ToggleBG()<CR>
+map ccs :call ToggleCC()<CR>
+inoremap jk <ESC>
+"删除了半天的插件后得出的结论
+"普通模式会对j进行一个判断，判断后面没跟k才会输出j，结果就造成了看上去往下走的时候最后一个键卡顿的效果
+"map jk  <ESC>
+"命令模式还是可以用
+cnoremap jk <ESC>
+"emmet 设置
+
+let g:user_emmet_expandabbr_key = '<C-Y>'
+let g:use_emmet_complete_tag = 1
+let g:user_emmet_settings = {"lang":"zh-cn"}
+
+"silent是指执行后面的命令时不显示在命令栏
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :Ag<CR>
+nnoremap <silent> <Leader>s :FlyGrep<CR>
+"nnoremap <silent> <Leader>v :Tags<CR>
+
+"快速对齐
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
+
+"快速关闭
+
+map <S-Q> :qa<CR>
+
+nnoremap <c-]> g<c-]>
+
+vnoremap <c-]> g<c-]>
+
+"多行光标键位解绑
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_prev_key='<C-p>'
+"let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"理解了下寄存器 命令模式需要C-R"才能粘贴 可视模式复制剪切
+"内部寄存器是"，外部是+
+cnoremap <leader>v <C-R>"
+nnoremap <leader>v "+p
+vnoremap <leader>c "+y
+vnoremap <leader>x "+x
+"添加括号
+"这个规则和下个规则实际效果一致
+nnoremap <leader>' viw<esc>a'<ESC>hbi'<Esc>lel
+"映射了连续操作，成对的引号插件不生效不影响
+nnoremap <leader>" bi"<ESC>ea"<ESC>
+"快速关闭单个窗口
+nmap <leader>q <C-W>q
+"多窗口切换
+"ctrl是修饰键可以按住不动的使用
+"leader只生效一次，需要不断重新敲击
+nmap <Leader>h <C-W><C-H>
+nmap <Leader>j <C-W><C-J>
+nmap <Leader>k <C-W><C-K>
+nmap <Leader>l <C-W><C-L>
+"tab窗口的切换移动
+nmap <silent><tab>h :tabp<cr>
+nmap <silent><tab>j :tabnew<cr>
+nmap <silent><tab>k :tabclose<cr>
+nmap <silent><tab>l :tabn<cr>
+nmap <silent><s-tab> :tabnext<cr>
+" 分割出的窗口 在下边或右边
+set splitbelow
+set splitright
+" gvim 不显示工具/菜单栏
+set guioptions-=T
+set guioptions-=m
+set guioptions-=L
+set guioptions-=r
+set guioptions-=b
+" 使用内置tab样式而不是gui样式
+set guioptions-=e
+set nolist
+" import emacs map
+imap <C-A> <HOME>
+imap <C-E> <END>
+cmap <C-A> <HOME>
+cmap <C-E> <END>
+nmap <C-A> <HOME>
+nmap <C-E> <END>
+"imap <C-A> <ESC>^i
+"imap <C-E> <ESC>$a
+"imap <C-K> <ESC>d$i
+"map <C-A> ^
+"map <C-E> $
+"map <C-K> d$
+" git Command git使用
+" gca 开启提交 cc进入commit :wq保存提交
+" gp 推送
+nnoremap gca :Gcommit -a -v<CR>
+"nnoremap gp  :Gpush <CR>
+"git push 这步阻塞太痛苦了，改成异步的
+nnoremap gl :AsyncRun git pull<CR>
+nnoremap gp :AsyncRun git push<CR>
+"当有消息时自动弹出消息窗
+augroup vimrc
+  autocmd QuickFixCmdPost * botright copen 8
+augroup END
+
+"leader+0~9 快捷键设置
+"在tree中t就可以新建一个tab来编辑
+nmap <Leader>1 :NERDTreeToggle<CR>
+"vim中的map中的!代表了插入模式和命令模式
+"而在后两者的模式的输入中对空格本身的判断延时会影响使用
+"所以去掉
+"nmap! <Leader>3 <Esc>:NERDTreeToggle<CR>
+"leader2 操控quickfixc窗口
+nnoremap <Leader>2 :call asyncrun#quickfix_toggle(8)<cr>
+"leader 3 打开 tagbar
+nnoremap <leader>3 :TagbarToggle<CR>
+"leader 4 打开 Tags
+nnoremap <leader>4 :AsyncRun ctags -R --fields=+S .<CR>
+"ctrl+s为保存
+map <C-S> :w<CR>
+inoremap <C-S> <C-O>:w<CR>
+
+"ctrl+z撤销
+
+map <C-Z> :u<CR>
+
+map! <C-Z> <C-O>:u<CR>
+
+"双击时高亮
+
+map <2-leftmouse> \m
+inoremap <2-leftmouse> <Esc>\m
+
+"ctrl+鼠标左键跳转
+
+"--------------------
+" Function: Open tag under cursor in new tab
+" Source:   http://stackoverflow.com/questions/563616/vimctags-tips-and-tricks
+"--------------------
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"--------------------
+" Function: Remap keys to make it more similar to firefox tab functionality
+" Purpose:  Because I am familiar with firefox tab functionality
+" 切换tab页 用gt
+"--------------------
+map     <C-T>       :tabnew<CR>
+
+map <A-LeftMouse> <C-]>
+
+map! <A-LeftMouse> <Esc><C-]>
+"在mac下iterm终端标题中中显示文件名称
+autocmd BufEnter *.* exe 'silent ! echo -ne "\033];%:t\007"'
+
+"支持鼠标
+
+set mouse=a
+
+
+" 多行缩进
+
+vnoremap <Tab> >
+
+vnoremap <S-Tab> <
+
+"语法高亮
+syntax enable
+syntax on
+set autoindent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+"加快速度
+"set synmaxcol=200
+set ttyfast " u got a fast terminal
+set lazyredraw " to avoid scrolling problems
+"删除键
+set backspace=eol,start,indent
+
+"基本设置
+
+set encoding=utf-8
+
+set fileencoding=utf-8
+
+set fileencodings=ucs-bom,utf-8,chinese
+
+set ambiwidth=double
+
+set wrap "自动换行
+
+"设置无备份
+
+set nobackup
+
+set nowritebackup
+
+"vim-closetag 
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
+"十字线高亮
+set cursorcolumn          " highlight current column
+set cursorline            " highlight current line
+
+"设置jsx插件对js也解析
+let g:jsx_ext_required = 0
+
+" 代码折叠
+set foldenable
+"set foldmarker={,}
+" 缩进折叠
+set foldmethod=indent
+" 语法折叠
+"set foldmethod=syntax
+"标记折叠
+"set foldmethod=marker
+" 折叠栏 太丑了我都瞎了
+"set foldcolumn=4
+set foldlevel=99
+"退出后不清空
+"set t_ti= t_te=
+set relativenumber " show relative line number
+set number         " show absolute number with relativenumber
+set ruler          " show the current line number and column number
+set scrolloff=9    " Set  lines to the cursor - when moving vertically using j/k"
+"代码提示 配合scrooloose/syntastic
+"npm i -g eslint eslint-config-airbnb babel-eslint eslint-plugin-react
+"eslint-plugin-react-native
+
+"test2
+"快捷提交
+nmap <leader>p <Plug>(Gpush)
+"leader6 刷新编辑器
+nnoremap <leader>6 :call Cd_source()<CR> 
+if !exists("*Edit_vim_plug")
+func Edit_vim_plug()
+  :cd $DOTFILE
+  :edit $MYVIMRC
+endfunc
+endif
+if !exists("*Cd_source")
+  func Cd_source()
+    :cd -
+    :source $MYVIMRC
+endfunc
+endif
+"leader+5 编辑vimrc
+map <leader>5 :call Edit_vim_plug()<CR>
+"leader+7 预览markdown 需要python和插件支持
+nnoremap <leader>7 :MarkdownPreview<cr>
+"source vimrc的时候会重新定义一下fuck，所以要想不触发错误，得在定义时加入判断
+if !exists("*Fuck")
+function! Fuck()
+  :cd $DOTFILE
+  "想尝试通过--git-dir 或者 -C的方式直接pull，似乎不行
+  :!git pull
+  "back to before dir
+  :cd -
+  "上面的回车是没用的，还是得进回车
+  source $MYVIMRC
+  echom "已更新"
+endfunction
+else
+  echom "updated"
+endif
+augroup autoupdate
+  "-------------------------------------------------------
+  if has("job")
+    autocmd VimEnter * nested call Update()
+  elseif has("nvim#还没兼容好")
+    function! s:OnEvent(job_id, data, event) dict
+      echom "nvim jobstart"
+      if a:event == 'stdout'
+        let str = self.shell.' stdout: '.join(a:data)
+      elseif a:event == 'stderr'
+        let str = self.shell.' stderr: '.join(a:data)
+      else
+        let str = self.shell.' exited'
+      endif
+
+      call append(line('$'), str)
+    endfunction
+    let s:callbacks = {
+    \ 'on_stdout': function('s:OnEvent'),
+    \ 'on_stderr': function('s:OnEvent'),
+    \ 'on_exit': function('s:OnEvent')
+    \ }
+    "let job1 = jobstart(['bash'], extend({'shell': 'shell 1'}, s:callbacks))
+    let job2 = jobstart(["git -C " . $DOTFILE . " pull"], extend({'shell': 'shell 2'}, s:callbacks))
+  else
+    autocmd VimEnter * nested call Fuck()
+  endif
+  "-------------------------------------------------------------------------
+augroup END
+"vimscript中用.而不是+链接字符串
+if !exists("*Update")
+  func Update()
+    let git_pull_job=job_start("git -C " . $DOTFILE . " pull",{"out_cb":"SourceHandler","err_cb":"ErrHandler"})
+  endfunc
+else
+  echom "updated"
+endif
+if !exists("*PlugHandler")
+func PlugHandler(channel,msg)
+  echo "Plug" . a:msg
+endfunc
+endif
+
+if !exists("*ErrHandler")
+func ErrHandler(channel,msg)
+  echo "Err" . a:msg
+endfunc
+endif
+if !exists("*SourceHandler")
+func SourceHandler(channel,msg)
+  echo "Suc" . a:msg
+  source $MYVIMRC
+endfunc
+endif
+augroup gocmd
+  autocmd FileType go nmap <leader>t <Plug>(go-test)
+  autocmd FileType go nmap <leader>b <Plug>(go-build)
+  autocmd FileType go nmap <leader>r <Plug>(go-run)
+  autocmd FileType go let g:go_highlight_types =1
+augroup END
+augroup jscmd
+  autocmd FileType javascript nmap <leader>t :AsyncRun npm test<CR>
+  autocmd FileType javascript nmap <leader>b :AsyncRun npm run build<CR>
+  autocmd FileType javascript nmap <leader>r :AsyncRun npm run start<CR>
+  autocmd FileType javascript nmap <leader>d :AsyncRun npm run dev<CR>
+augroup END
+
+
+"显示
+let g:airline#extensions#ale#enabled = 1
+"自动完成
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+"自动纠正
+let g:ale_fix_on_save = 1
+"保持打开栏目
+let g:ale_sign_column_always = 1
+"--------------------------------------------------
+"incsearch
+"--------------------------------------------------
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+"搜索后自动关闭高亮
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" ----------------------------------------------------------------------------
+" tern_for_vim
+" ----------------------------------------------------------------------------
+let tern_show_signature_in_pum = 1
+let tern_show_argument_hints = 'on_hold'
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+"不晓得什么用，先注销
+"autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
