@@ -10,7 +10,7 @@ lnif() {
 }
 
 echo "Step0: install dependencies "
-sudo apt-get install silversearcher-ag ctags vim
+sudo apt-get install silversearcher-ag ctags vim python3-pip
 sudo yum install the_silver_searcher ctags vim
 brew install the_silver_searcher ctags vim
 
