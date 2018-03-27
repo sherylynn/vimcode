@@ -1,0 +1,6 @@
+autoload/
+plugged/
+node_modules/
+*.swp
+tags
+init.vim
