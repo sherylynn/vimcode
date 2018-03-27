@@ -131,6 +131,15 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 "Go 插件
 Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
+let g:go_highlight_functions=1
+let g:go_highlight_methods=1
+let g:go_highlight_operators=1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_metailinter_autosave=1
 "git 插件
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
