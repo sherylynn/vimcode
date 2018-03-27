@@ -128,7 +128,7 @@ Plug 'alvan/vim-closetag'
 "beauty
 Plug 'vim-scripts/matchit.zip'
 "tern js 补全
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 "Go 插件
 Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
 let g:go_highlight_types=1
@@ -217,6 +217,7 @@ else
       let col = col('.') -1
       return !col || getline('.')[col-1]=~ '\s'
     endfunc
+    set completeopt+=preview
     inoremap <silent><expr> <TAB>
       \ pumvisible() ?"\<C-n>":
       \ <SID>check_back_space() ? "\<TAB>":
@@ -541,7 +542,7 @@ nnoremap <leader>6 :call Cd_source()<CR>
 if !exists("*Edit_vim_plug")
 func Edit_vim_plug()
   :cd $DOTFILE
-  :edit $MYVIMRC
+  :edit $DOTFILE/config/vimrc
 endfunc
 endif
 if !exists("*Cd_source")
