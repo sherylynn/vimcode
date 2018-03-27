@@ -5,7 +5,8 @@ let $DOTFILE=expand("$HOME/vimcode")
 let $BUNDLE =expand("$DOTFILE/plugged")
 let $PLUG_DIR=expand("$DOTFILE/autoload")
 if has('win32')||has('win64')
-  let $PLUG_VIM="%USERPROFILE%/vimcode/autoload/plug.vim"
+  cd $DOTFILE
+  let $PLUG_VIM="autoload/plug.vim"
 else
   let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
 endif
