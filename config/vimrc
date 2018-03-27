@@ -4,12 +4,13 @@ set nocompatible        " Must be first line
 let $DOTFILE=expand("$HOME/vimcode")
 let $BUNDLE =expand("$DOTFILE/plugged")
 let $PLUG_DIR=expand("$DOTFILE/autoload")
-if empty(glob(expand("$PLUG_DIR/plug.vim")))
-  silent !curl -fLo $PLUG_DIR/plug.vim --create-dirs
+let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
+if empty(glob($PLUG_VIM))
+  silent !curl -fLo $PLUG_VIM --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
-source $PLUG_DIR/plug.vim
+source $PLUG_VIM
 " Windows Compatible {
 " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
 " across (heterogeneous) systems easier.
