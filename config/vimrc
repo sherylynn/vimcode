@@ -207,8 +207,10 @@ if has('python3')
   " client side. Default: 1
   let g:deoplete#sources#ternjs#filter = 0
   "use tern_for_vim
-  let g:tern#command =["tern"]
-  let g:tern#arguments =["--persistent"]
+  "let g:tern#command =["tern"]
+  "let g:tern#arguments =["--persistent"]
+  "-------------------------------------------
+  Plug 'mhartington/nvim-typescript'
   "-------------------------------------------
   "go
   Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
@@ -221,6 +223,8 @@ else
     Plug 'prabirshrestha/asyncomplete-file.vim'
     Plug 'prabirshrestha/asyncomplete-gocode.vim'
     Plug 'yami-beta/asyncomplete-omni.vim'
+    Plug 'runoshun/tscompletejob'
+    Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
     au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name':'buffer',
     \ 'whitelist':['*'],
@@ -247,6 +251,11 @@ else
     \ 'blacklist': ['html'],
     \ 'completor': function('asyncomplete#sources#omni#completor')
     \  }))
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
+    \ 'name': 'tscompletejob',
+    \ 'whitelist': ['typescript'],
+    \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
+    \ }))
     "----------------flow----------
     " Plug 'prabirshrestha/async.vim'
     " Plug 'prabirshrestha/asyncomplete-flow.vim',{'do':'npm install -g flow-bin'}
