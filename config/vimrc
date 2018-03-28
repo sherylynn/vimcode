@@ -186,6 +186,7 @@ if has('python3')
   "Plug 'Shougo/neosnippet'
   "Plug 'Shougo/neosnippet-snippets'
   "---------------------------------------
+  Plug 'zchee/deoplete-go', { 'do': 'make'}
   let g:deoplete#enable_at_startup = 1
 else
   if has('job')||has('job_start')
