@@ -220,7 +220,7 @@ else
     Plug 'prabirshrestha/asyncomplete-buffer.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
     Plug 'prabirshrestha/asyncomplete-gocode.vim'
-    Plug 'prabirshrestha/asyncomplete-omni.vim'
+    Plug 'yami-beta/asyncomplete-omni.vim'
     au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name':'buffer',
     \ 'whitelist':['*'],
