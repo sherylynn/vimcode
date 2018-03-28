@@ -92,6 +92,8 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Bundle 'JavaScript-syntax'
 Plug 'pangloss/vim-javascript'
 
+"tern js 补全
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 " jquery , angularjs 等语法
 Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 
@@ -186,7 +188,7 @@ if has('python3')
   "Plug 'Shougo/neosnippet'
   "Plug 'Shougo/neosnippet-snippets'
   "---------------------------------------
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
+  Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
   let g:deoplete#enable_at_startup = 1
 else
   if has('job')||has('job_start')
@@ -687,8 +689,6 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-"配套使用的补全tern js 补全
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 " ----------------------------------------------------------------------------
 " tern_for_vim
 " ----------------------------------------------------------------------------
