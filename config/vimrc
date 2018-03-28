@@ -207,8 +207,9 @@ if has('python3')
   " client side. Default: 1
   let g:deoplete#sources#ternjs#filter = 0
   "use tern_for_vim
-  "let g:tern#command =["tern"]
+  let g:tern#command =["tern"]
   "let g:tern#arguments =["--persistent"]
+  let g:tern#arguments =["--no-port-file"]
   "-------------------------------------------
   Plug 'mhartington/nvim-typescript'
   "-------------------------------------------
