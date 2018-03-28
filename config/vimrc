@@ -181,6 +181,11 @@ if has('python3')
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
   endif
+  "注释部分为flow补全---------------------
+  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
+  "Plug 'Shougo/neosnippet'
+  "Plug 'Shougo/neosnippet-snippets'
+  "---------------------------------------
   let g:deoplete#enable_at_startup = 1
 else
   if has('job')||has('job_start')
@@ -189,6 +194,7 @@ else
     Plug 'prabirshrestha/asyncomplete-buffer.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
     Plug 'prabirshrestha/asyncomplete-gocode.vim'
+    Plug 'prabirshrestha/asyncomplete-omni.vim'
     au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name':'buffer',
     \ 'whitelist':['*'],
@@ -209,6 +215,21 @@ else
     \    'gocode_path':expand('~/go/bin/gocode')
     \  }
     \  }))
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['html'],
+    \ 'completor': function('asyncomplete#sources#omni#completor')
+    \  }))
+    "----------------flow----------
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/asyncomplete-flow.vim',{'do':'npm install -g flow-bin'}
+    " au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
+    " \ 'name': 'flow',
+    " \ 'whitelist': ['javascript'],
+    " \ 'completor': function('asyncomplete#sources#flow#completor'),
+    " \ }))
+    "------------------------------
     "补全方式换异步
     let g:asyncomplete_auto_popup =1
     func! s:check_back_space() abort
@@ -222,6 +243,7 @@ else
       \ asyncomplete#force_refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
   else
+    "老版本补全
     Plug 'vim-scripts/AutoComplPop'
     autocomplpop 设置
     let g:AutoComplPop_IgnoreCaseOption=1
@@ -239,17 +261,7 @@ else
     "shift+tab 展开代码片段
     imap <S-TAB> <Plug>snipMateNextOrTrigger
 
-    "配套使用的补全tern js 补全
-    Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-    " ----------------------------------------------------------------------------
-    " tern_for_vim
-    " ----------------------------------------------------------------------------
-    let tern_show_signature_in_pum = 1
-    let tern_show_argument_hints = 'on_hold'
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-    "不晓得什么用，先注销
-    "autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
-  endif
+      endif
 endif
 
 call plug#end()
@@ -674,4 +686,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-
+"配套使用的补全tern js 补全
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+" ----------------------------------------------------------------------------
+" tern_for_vim
+" ----------------------------------------------------------------------------
+let tern_show_signature_in_pum = 1
+let tern_show_argument_hints = 'on_hold'
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+"不晓得什么用，先注销
+"autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
