@@ -379,6 +379,9 @@ let g:user_emmet_settings = {"lang":"zh-cn"}
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>g :Ag<CR>
 nnoremap <silent> <Leader>s :FlyGrep<CR>
+"mobile leader>t 已经被test占用
+nnoremap <silent> <Leader>wt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>wq :call asyncrun#quickfix_toggle(8)<cr>
 "nnoremap <silent> <Leader>v :Tags<CR>
 
 "快速对齐
