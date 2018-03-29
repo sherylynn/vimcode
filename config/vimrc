@@ -175,48 +175,48 @@ func! PanGu_Full()
   :g!/^$/s/^/　　/
 endfunc 
 "异步补全，需要python3
-if has('python3')
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
-  endif
-  "注释部分为flow补全---------------------
-  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
-  "Plug 'Shougo/neosnippet'
-  "Plug 'Shougo/neosnippet-snippets'
-  "---------------------------------------
-  "--------ternjs-----------------
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  " Whether to include the types of the completions in the result data. Default: 0
-  let g:deoplete#sources#ternjs#types = 1
-
-  " Whether to include the distance (in scopes for variables, in prototypes for 
-  " properties) between the completions and the origin position in the result 
-  " data. Default: 0
-  let g:deoplete#sources#ternjs#depths = 1
-
-  " Whether to include documentation strings (if found) in the result data.
-  " Default: 0
-  let g:deoplete#sources#ternjs#docs = 1
-
-  " When on, only completions that match the current word at the given point will
-  " be returned. Turn this off to get all results, so that you can filter on the 
-  " client side. Default: 1
-  let g:deoplete#sources#ternjs#filter = 0
-  "use tern_for_vim
-  let g:tern#command =["tern"]
-  "let g:tern#arguments =["--persistent"]
-  let g:tern#arguments =["--no-port-file"]
-  "-------------------------------------------
-  Plug 'mhartington/nvim-typescript'
-  "-------------------------------------------
-  "go
-  Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
-  let g:deoplete#enable_at_startup = 1
-else
+"if has('python3')
+"  if has('nvim')
+"    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  else
+"    Plug 'Shougo/deoplete.nvim'
+"    Plug 'roxma/nvim-yarp'
+"    Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
+"  endif
+"  "注释部分为flow补全---------------------
+"  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
+"  "Plug 'Shougo/neosnippet'
+"  "Plug 'Shougo/neosnippet-snippets'
+"  "---------------------------------------
+"  "--------ternjs-----------------
+"  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+"  " Whether to include the types of the completions in the result data. Default: 0
+"  let g:deoplete#sources#ternjs#types = 1
+"
+"  " Whether to include the distance (in scopes for variables, in prototypes for 
+"  " properties) between the completions and the origin position in the result 
+"  " data. Default: 0
+"  let g:deoplete#sources#ternjs#depths = 1
+"
+"  " Whether to include documentation strings (if found) in the result data.
+"  " Default: 0
+"  let g:deoplete#sources#ternjs#docs = 1
+"
+"  " When on, only completions that match the current word at the given point will
+"  " be returned. Turn this off to get all results, so that you can filter on the 
+"  " client side. Default: 1
+"  let g:deoplete#sources#ternjs#filter = 0
+"  "use tern_for_vim
+"  let g:tern#command =["tern"]
+"  "let g:tern#arguments =["--persistent"]
+"  let g:tern#arguments =["--no-port-file"]
+"  "-------------------------------------------
+"  Plug 'mhartington/nvim-typescript'
+"  "-------------------------------------------
+"  "go
+"  Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
+"  let g:deoplete#enable_at_startup = 1
+"else
   if has('job')||has('job_start')
     "纯vimscript异步补全
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -298,7 +298,7 @@ else
     imap <S-TAB> <Plug>snipMateNextOrTrigger
 
       endif
-endif
+"endif
 
 call plug#end()
 
