@@ -226,7 +226,7 @@ endfunc
     "纯vimscript异步补全
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/vim-lsp',{'do':'pip3 install python-language-server'}
+    Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server'}
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'prabirshrestha/asyncomplete-buffer.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
@@ -235,7 +235,7 @@ endfunc
     Plug 'runoshun/tscompletejob'
     Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
     if executable('pyls')
-      "pip install python-language-server
+      "sudo pip install python-language-server
       au User lsp_setup call lsp#register_server({
         \ 'name':'pyls',
         \ 'cmd':{server_info->['pyls']},
