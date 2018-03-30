@@ -226,7 +226,7 @@ endfunc
     "纯vimscript异步补全
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server'}
+    Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'prabirshrestha/asyncomplete-buffer.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
