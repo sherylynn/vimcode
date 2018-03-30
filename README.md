@@ -29,6 +29,10 @@ windows下把install.sh改为 install.bat即可
 
 * cbg：选择solarized主题后，按cbg可以切换背景色
 
+* leader+w+q|w|e: 类似leader+1|2|3的窗口布局
+
+* leader+e+e|r: 类似leader+5|6的b编辑vimrc
+
 * leader+hjjk：窗口间移动
 
 * leader+1 ：在编辑器左侧打开文件浏览器。[C进入文件夹 cd切换路径 t新标签打开 i新窗口打开]
