@@ -1,6 +1,9 @@
 " Basics {
 set nocompatible        " Must be first line
 " }
+"补全软件的选择k可以在这里设置
+let g:completor='deoplete'
+"加载路径
 let $DOTFILE=expand("$HOME/vimcode")
 let $BUNDLE =expand("$DOTFILE/plugged")
 let $PLUG_DIR=expand("$DOTFILE/autoload")
@@ -92,8 +95,10 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Bundle 'JavaScript-syntax'
 Plug 'pangloss/vim-javascript'
 
-"tern js 补全
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+if g:completor=='asyncomplete'||g:completor=='autocomplpop'
+  "tern js 补全
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+endif
 " jquery , angularjs 等语法
 Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 
@@ -177,144 +182,140 @@ func! PanGu_Full()
   :g!/^$/s/^/　　/
 endfunc 
 "异步补全，需要python3
-"if has('python3')
-"  if has('nvim')
-"    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"  else
-"    Plug 'Shougo/deoplete.nvim'
-"    Plug 'roxma/nvim-yarp'
-"    Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
-"  endif
-"  "注释部分为flow补全---------------------
-"  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
-"  "Plug 'Shougo/neosnippet'
-"  "Plug 'Shougo/neosnippet-snippets'
-"  "---------------------------------------
-"  "--------ternjs-----------------
-"  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-"  " Whether to include the types of the completions in the result data. Default: 0
-"  let g:deoplete#sources#ternjs#types = 1
-"
-"  " Whether to include the distance (in scopes for variables, in prototypes for 
-"  " properties) between the completions and the origin position in the result 
-"  " data. Default: 0
-"  let g:deoplete#sources#ternjs#depths = 1
-"
-"  " Whether to include documentation strings (if found) in the result data.
-"  " Default: 0
-"  let g:deoplete#sources#ternjs#docs = 1
-"
-"  " When on, only completions that match the current word at the given point will
-"  " be returned. Turn this off to get all results, so that you can filter on the 
-"  " client side. Default: 1
-"  let g:deoplete#sources#ternjs#filter = 0
-"  "use tern_for_vim
-"  let g:tern#command =["tern"]
-"  "let g:tern#arguments =["--persistent"]
-"  let g:tern#arguments =["--no-port-file"]
-"  "-------------------------------------------
-"  Plug 'mhartington/nvim-typescript'
-"  "-------------------------------------------
-"  "go
-"  Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
-"  let g:deoplete#enable_at_startup = 1
-"else
-"if has('python3')
-"  Plug 'maralla/completor.vim',{'do':'pip3 install jedi'}
-"else
-  if has('job')||has('job_start')
-    "纯vimscript异步补全
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-buffer.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
-    Plug 'prabirshrestha/asyncomplete-gocode.vim'
-    Plug 'yami-beta/asyncomplete-omni.vim'
-    Plug 'runoshun/tscompletejob'
-    Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
-    if executable('pyls')
-      "sudo pip install python-language-server
-      au User lsp_setup call lsp#register_server({
-        \ 'name':'pyls',
-        \ 'cmd':{server_info->['pyls']},
-        \ 'whitelist':['python'],
-        \ })
+if has('python3')
+  if g:completor=="deoplete"
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
     endif
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name':'buffer',
-    \ 'whitelist':['*'],
-    \ 'blacklist':['go'],
-    \ 'completor':function('asyncomplete#sources#buffer#completor'),
-    \ }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \  'name':'file',
-    \  'whitelist':['*'],
-    \  'priority':10,
-    \  'completor':function('asyncomplete#sources#file#completor')
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
-    \  'name':'gocode',
-    \  'whitelist':['go'],
-    \  'completor':function('asyncomplete#sources#gocode#completor'),
-    \  'config':{
-    \    'gocode_path':expand('~/go/bin/gocode')
-    \  }
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-    \ 'name': 'omni',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['html'],
-    \ 'completor': function('asyncomplete#sources#omni#completor')
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
-    \ 'name': 'tscompletejob',
-    \ 'whitelist': ['typescript'],
-    \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
-    \ }))
-    "----------------flow----------
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/asyncomplete-flow.vim',{'do':'npm install -g flow-bin'}
-    " au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
-    " \ 'name': 'flow',
-    " \ 'whitelist': ['javascript'],
-    " \ 'completor': function('asyncomplete#sources#flow#completor'),
-    " \ }))
-    "------------------------------
-    "补全方式换异步
-    let g:asyncomplete_auto_popup =1
-    func! s:check_back_space() abort
-      let col = col('.') -1
-      return !col || getline('.')[col-1]=~ '\s'
-    endfunc
-    set completeopt+=preview
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ?"\<C-n>":
-      \ <SID>check_back_space() ? "\<TAB>":
-      \ asyncomplete#force_refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  "  "注释部分为flow补全---------------------
+  "  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
+  "  "Plug 'Shougo/neosnippet'
+  "  "Plug 'Shougo/neosnippet-snippets'
+  "  "---------------------------------------
+  "  "--------ternjs-----------------
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+    let g:deoplete#sources#ternjs#types = 1
+
+    let g:deoplete#sources#ternjs#depths = 1
+    let g:deoplete#sources#ternjs#docs = 1
+    let g:deoplete#sources#ternjs#filter = 0
+    "下面三个设定是为了配合tern_for_vims使用的，但是一直有问题
+    let g:tern#command =["tern"]
+    "let g:tern#arguments =["--persistent"]
+    "用了这个参数还是不行啊，还是会产生.tern_port
+    "下一步尝试把autocmd 设置进入的时候直接删掉目录中的.tern_port
+    "那么还是可以用的，得了解vim如何探测目录
+    let g:tern#arguments =["--no-port-file"]
+    "-------------------------------------------
+    Plug 'mhartington/nvim-typescript'
+    "-------------------------------------------
+    "go
+    Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
+    let g:deoplete#enable_at_startup = 1
+  elseif g:completor=="completor"
+    Plug 'maralla/completor.vim',{'do':'pip3 install jedi'}
+  endif
+else
+  if has('job')||has('job_start')
+    if g:completor=="aysncomplete"
+      "纯vimscript异步补全
+      Plug 'prabirshrestha/async.vim'
+      Plug 'prabirshrestha/asyncomplete.vim'
+      Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
+      Plug 'prabirshrestha/asyncomplete-lsp.vim'
+      Plug 'prabirshrestha/asyncomplete-buffer.vim'
+      Plug 'prabirshrestha/asyncomplete-file.vim'
+      Plug 'prabirshrestha/asyncomplete-gocode.vim'
+      Plug 'yami-beta/asyncomplete-omni.vim'
+      Plug 'runoshun/tscompletejob'
+      Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
+      if executable('pyls')
+        "sudo pip install python-language-server
+        au User lsp_setup call lsp#register_server({
+          \ 'name':'pyls',
+          \ 'cmd':{server_info->['pyls']},
+          \ 'whitelist':['python'],
+          \ })
+      endif
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+      \ 'name':'buffer',
+      \ 'whitelist':['*'],
+      \ 'blacklist':['go'],
+      \ 'completor':function('asyncomplete#sources#buffer#completor'),
+      \ }))
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \  'name':'file',
+      \  'whitelist':['*'],
+      \  'priority':10,
+      \  'completor':function('asyncomplete#sources#file#completor')
+      \  }))
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
+      \  'name':'gocode',
+      \  'whitelist':['go'],
+      \  'completor':function('asyncomplete#sources#gocode#completor'),
+      \  'config':{
+      \    'gocode_path':expand('~/go/bin/gocode')
+      \  }
+      \  }))
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+      \ 'name': 'omni',
+      \ 'whitelist': ['*'],
+      \ 'blacklist': ['html'],
+      \ 'completor': function('asyncomplete#sources#omni#completor')
+      \  }))
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
+      \ 'name': 'tscompletejob',
+      \ 'whitelist': ['typescript'],
+      \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
+      \ }))
+      "----------------flow----------
+      " Plug 'prabirshrestha/async.vim'
+      " Plug 'prabirshrestha/asyncomplete-flow.vim',{'do':'npm install -g flow-bin'}
+      " au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
+      " \ 'name': 'flow',
+      " \ 'whitelist': ['javascript'],
+      " \ 'completor': function('asyncomplete#sources#flow#completor'),
+      " \ }))
+      "------------------------------
+      "补全方式换异步
+      let g:asyncomplete_auto_popup =1
+      func! s:check_back_space() abort
+        let col = col('.') -1
+        return !col || getline('.')[col-1]=~ '\s'
+      endfunc
+      set completeopt+=preview
+      inoremap <silent><expr> <TAB>
+        \ pumvisible() ?"\<C-n>":
+        \ <SID>check_back_space() ? "\<TAB>":
+        \ asyncomplete#force_refresh()
+      inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    endif
   else
     "老版本补全
-    Plug 'vim-scripts/AutoComplPop'
-    autocomplpop 设置
-    let g:AutoComplPop_IgnoreCaseOption=1
-    function! InsertTabWrapper()
-      let col=col('.')-1
-      if !col || getline('.')[col-1] !~ '\k'
-        return "\<TAB>"
-      else
-        return "\<C-x>\<C-o>"
-      endif
-    endfunction
-    "按tab键，全能提示，
-    "注意要用inoremap，不能用map！，如果用map！在命令模式下tab键没有提示功能。
-    inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
-    "shift+tab 展开代码片段
-    imap <S-TAB> <Plug>snipMateNextOrTrigger
+    if g:completor=='autocomplpop'
+      Plug 'vim-scripts/AutoComplPop'
+      autocomplpop 设置
+      let g:AutoComplPop_IgnoreCaseOption=1
+      function! InsertTabWrapper()
+        let col=col('.')-1
+        if !col || getline('.')[col-1] !~ '\k'
+          return "\<TAB>"
+        else
+          return "\<C-x>\<C-o>"
+        endif
+      endfunction
+      "按tab键，全能提示，
+      "注意要用inoremap，不能用map！，如果用map！在命令模式下tab键没有提示功能。
+      inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
+      "shift+tab 展开代码片段
+      imap <S-TAB> <Plug>snipMateNextOrTrigger
+    endif
   endif
-"endif
-"endif
+endif
 
 call plug#end()
 
@@ -744,11 +745,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-" ----------------------------------------------------------------------------
-" tern_for_vim
-" ----------------------------------------------------------------------------
-let tern_show_signature_in_pum = 1
-let tern_show_argument_hints = 'on_hold'
-autocmd FileType javascript setlocal omnifunc=tern#Complete
-"不晓得什么用，先注销
-"autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+if g:completor=='asyncomplete'||g:completor=='autocomplpop'
+  " ----------------------------------------------------------------------------
+  " tern_for_vim
+  " ----------------------------------------------------------------------------
+  let tern_show_signature_in_pum = 1
+  let tern_show_argument_hints = 'on_hold'
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+  "不晓得什么用，先注销
+  "autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+endif
