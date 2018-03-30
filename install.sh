@@ -40,7 +40,7 @@ echo "Step3: update/install plugins using vim-plug"
 #完全忘记上面自己切换shell的环境的代码在写啥了
 source ./proxy.sh
 #vim -c "GoInstallBinaries" -c "qa"
-vim +GoInstallBinaries! +qall
+#vim +GoInstallBinaries! +qall
 
 echo "Step4: install eslint"
 echo "It will take a long time, just be patient!"
