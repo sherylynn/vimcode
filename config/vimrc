@@ -129,6 +129,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 "beauty
 Plug 'vim-scripts/matchit.zip'
+"python-mode
+Plug 'python-mode/python-mode'
 "Go 插件
 Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
 let g:go_highlight_types=1
