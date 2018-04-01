@@ -1,4 +1,4 @@
-SetCapsLockState , AlwaysOff
+﻿SetCapsLockState , AlwaysOff
 CapsLock & b::SendInput {Left}
 CapsLock & n::SendInput {Down}
 CapsLock & p::SendInput {Up}
@@ -26,3 +26,16 @@ Ctrl & a::SendInput {Home}
 Ctrl & e::SendInput {End}
 Ctrl & d::SendInput {Delete}
 Ctrl & k::SendInput, +{End}{Delete}
+;先注释避免影响vim中效果
+;~y::
+;Keywait, y, , t0.5
+;if errorlevel = 1
+;return
+;else
+;Keywait, y, d, t0.1
+;if errorlevel = 0
+;{
+;Send +{End} {Delete}
+;return
+;}
+;return
