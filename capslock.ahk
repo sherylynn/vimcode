@@ -18,3 +18,11 @@ CapsLock::SendInput ^
 ;Capslock::Ctrl
 ;LWin::Alt
 ;Alt::Ctrl
+Ctrl & b::SendInput {Left}
+Ctrl & n::SendInput {Down}
+Ctrl & p::SendInput {Up}
+Ctrl & f::SendInput {Right}
+Ctrl & a::SendInput {Home}
+Ctrl & e::SendInput {End}
+Ctrl & d::SendInput {Delete}
+Ctrl & k::SendInput, +{End}{Delete}
