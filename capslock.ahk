@@ -10,6 +10,7 @@ CapsLock & k::SendInput, +{End}{Delete}
 ;CapsLock & c::SendInput {Esc}
 ;CapsLock & c::SendInput, ^{[}
 CapsLock & c::SendInput, ^{C}
+CapsLock & v::SendInput, ^{v}
 ;Shift & CapsLock::SendInput, {Shift Down}{Blind}{Esc}{Shift Up}
 ;用^表示ctrl 用+表示 shift
 CapsLock::SendInput ^
