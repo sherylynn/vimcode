@@ -27,6 +27,10 @@ Ctrl & a::SendInput {Home}
 Ctrl & e::SendInput {End}
 Ctrl & d::SendInput {Delete}
 Ctrl & k::SendInput, +{End}{Delete}
+Alt & a::SendInput, ^{A}
+Alt & x::SendInput, ^{X}
+Alt & c::SendInput, ^{C}
+Alt & v::SendInput, ^{v}
 ;先注释避免影响vim中效果
 ;~y::
 ;Keywait, y, , t0.5
