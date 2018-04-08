@@ -162,7 +162,7 @@ Plug 'skywind3000/asyncrun.vim'
 "编译任务插件
 Plug 'skywind3000/vimmake'
 Plug 'hsanson/vim-android'
-"Plug 'chemzqm/wxapp.vim'
+Plug 'chemzqm/wxapp.vim'
 Plug 'posva/vim-vue'
 "微软typerscript支持，高亮
 Plug 'leafgarland/typescript-vim'
