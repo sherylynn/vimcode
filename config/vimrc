@@ -442,6 +442,7 @@ vnoremap <leader>x "+x
 nnoremap <leader>' viw<esc>a'<ESC>hbi'<Esc>lel
 "映射了连续操作，成对的引号插件不生效不影响
 nnoremap <leader>" bi"<ESC>ea"<ESC>
+nnoremap <leader>( bi(<ESC>ea)<ESC>
 "快速关闭单个窗口
 nmap <leader>q <C-W>q
 "多窗口切换
@@ -489,6 +490,7 @@ nnoremap gca :Gcommit -a -v<CR>
 "nnoremap gp  :Gpush <CR>
 "git push 这步阻塞太痛苦了，改成异步的
 nnoremap gl :AsyncRun git pull<CR>
+nnoremap gs :Gstatus<CR>
 nnoremap gp :AsyncRun git push<CR>
 "当有消息时自动弹出消息窗
 augroup vimrc
