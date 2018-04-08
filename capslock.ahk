@@ -31,6 +31,7 @@ Alt & a::SendInput, ^{A}
 Alt & x::SendInput, ^{X}
 Alt & c::SendInput, ^{C}
 Alt & v::SendInput, ^{V}
+Alt & f::SendInput, ^{F}
 Alt & s::SendInput, ^{S}
 Alt & z::SendInput, ^{Z}
 ;先注释避免影响vim中效果
