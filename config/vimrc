@@ -452,6 +452,10 @@ nmap <Leader>h <C-W><C-H>
 nmap <Leader>j <C-W><C-J>
 nmap <Leader>k <C-W><C-K>
 nmap <Leader>l <C-W><C-L>
+nmap <Leader>wh <C-W><C-H>
+nmap <Leader>wj <C-W><C-J>
+nmap <Leader>wk <C-W><C-K>
+nmap <Leader>wl <C-W><C-L>
 "tab窗口的切换移动
 nmap <silent><tab>h :tabp<cr>
 nmap <silent><tab>j :tabnew<cr>
