@@ -10,13 +10,14 @@ let g:completor='asyncomplete'
 let $DOTFILE=expand("$HOME/vimcode")
 let $BUNDLE =expand("$DOTFILE/plugged")
 let $PLUG_DIR=expand("$DOTFILE/autoload")
+let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
+if empty(glob($PLUG_VIM))
 if has('win32')||has('win64')
   cd $DOTFILE
   let $PLUG_VIM="autoload/plug.vim"
 else
-  let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
+  "如果是其他系统不需要调整路径
 endif
-if empty(glob($PLUG_VIM))
   silent !curl -fLo $PLUG_VIM --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
