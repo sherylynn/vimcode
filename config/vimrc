@@ -722,6 +722,12 @@ augroup gocmd
   autocmd FileType go let g:go_highlight_types =1
 augroup END
 augroup jscmd
+  autocmd FileType html nmap <leader>t :AsyncRun npm test<CR>
+  autocmd FileType html nmap <leader>b :AsyncRun npm run build<CR>
+  autocmd FileType html nmap <leader>r :AsyncRun npm run start<CR>
+  autocmd FileType html nmap <leader>d :AsyncRun npm run dev<CR>
+augroup END
+augroup jscmd
   autocmd FileType javascript nmap <leader>t :AsyncRun npm test<CR>
   autocmd FileType javascript nmap <leader>b :AsyncRun npm run build<CR>
   autocmd FileType javascript nmap <leader>r :AsyncRun npm run start<CR>
