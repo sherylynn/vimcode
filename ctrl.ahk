@@ -8,6 +8,7 @@ CapsLock & e::SendInput {End}
 CapsLock & d::SendInput {Delete}
 CapsLock & k::SendInput, +{End}^{x}
 CapsLock & y::SendInput, ^{v}
+CapsLock & r::SendInput, ^{f}
 ;CapsLock & c::SendInput {Esc}
 ;CapsLock & c::SendInput, ^{[}
 CapsLock & c::SendInput, ^{C}
@@ -30,6 +31,7 @@ Ctrl & d::SendInput {Delete}
 ;Ctrl & k::SendInput, +{End}{Delete}
 Ctrl & k::SendInput, +{End}^{x}
 Ctrl & y::SendInput, ^{v}
+Ctrl & r::SendInput, ^{f}
 Alt & a::SendInput, ^{A}
 Alt & x::SendInput, ^{X}
 Alt & c::SendInput, ^{C}

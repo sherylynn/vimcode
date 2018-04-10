@@ -8,6 +8,7 @@ CapsLock & e::SendInput {End}
 CapsLock & d::SendInput {Delete}
 CapsLock & k::SendInput, +{End}^{x}
 CapsLock & y::SendInput, ^{v}
+CapsLock & r::SendInput, ^{f}
 ;CapsLock & c::SendInput {Esc}
 ;CapsLock & c::SendInput, ^{[}
 CapsLock & c::SendInput, ^{C}
@@ -30,13 +31,13 @@ CapsLock::SendInput ^
 ;Ctrl & k::SendInput, +{End}{Delete}
 ;;Ctrl & k::SendInput, +{End}^{x}
 ;;Ctrl & y::SendInput, ^{v}
-Alt & a::SendInput, ^{A}
-Alt & x::SendInput, ^{X}
-Alt & c::SendInput, ^{C}
-Alt & v::SendInput, ^{V}
-Alt & f::SendInput, ^{F}
-Alt & s::SendInput, ^{S}
-Alt & z::SendInput, ^{Z}
+;;Alt & a::SendInput, ^{A}
+;;Alt & x::SendInput, ^{X}
+;;Alt & c::SendInput, ^{C}
+;;Alt & v::SendInput, ^{V}
+;;Alt & f::SendInput, ^{F}
+;;Alt & s::SendInput, ^{S}
+;;Alt & z::SendInput, ^{Z}
 ;先注释避免影响vim中效果
 ;~y::
 ;Keywait, y, , t0.5
