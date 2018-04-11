@@ -182,6 +182,14 @@ Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 "中文排版规范化用法  :PanGu
 Plug 'hotoo/pangu.vim'
+func! FuckVim()
+  ":tabnew<CR>
+  :sp _buffer<CR>
+  ":b _buffer<CR>
+  :normal ihello
+  :r !whoami
+endfunc 
+nnoremap <leader>fv :call FuckVim()<CR>
 func! PanGu_Full()
   :call PanGuSpacing()
   "段首加俩全角空格
