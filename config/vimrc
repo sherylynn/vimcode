@@ -383,8 +383,8 @@ elseif has('win32') || has('win64')
 else
   set t_Co=256
 endif
-map cbg :call ToggleBG()<CR>
-map ccs :call ToggleCC()<CR>
+map <leader>tb :call ToggleBG()<CR>
+map <leader>tc :call ToggleCC()<CR>
 inoremap jk <ESC>
 "删除了半天的插件后得出的结论
 "普通模式会对j进行一个判断，判断后面没跟k才会输出j，结果就造成了看上去往下走的时候最后一个键卡顿的效果
