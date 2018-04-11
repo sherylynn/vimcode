@@ -172,7 +172,7 @@ Plug 'Quramy/tsuquyomi'
 "彩虹括号
 Plug 'luochen1990/rainbow'
 "插件在切换buffer时有问题，所以设定成关闭然后手动呼唤
-let g:rainbow_active=0
+let g:rainbow_active=1
 "markdown
 Plug 'tpope/vim-markdown',{'for':'markdown'}
 "markdown preview
@@ -342,8 +342,6 @@ let g:NERDTreeWinSize = 20
 let g:tagbar_width=20
 "自动打开nerdtree
 "autocmd vimenter * NERDTree
-"彩虹括号开启
-let g:rainbow_active = 1  
 "颜色主题设置
 set background=dark
 colorscheme codedark
