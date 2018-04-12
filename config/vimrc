@@ -420,6 +420,8 @@ nnoremap <silent> <Leader>ee :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>er :call Cd_source()<cr>
 "edit load editfile
 nnoremap <silent> <Leader>el :source %<cr>
+"add comment to vimrc
+nnoremap <silent> <Leader>ec 0i"<Esc>
 "nnoremap <silent> <Leader>v :Tags<CR>
 
 "快速对齐
@@ -455,8 +457,11 @@ vnoremap <leader>x "+x
 "这个规则和下个规则实际效果一致
 nnoremap <leader>' viw<esc>a'<ESC>hbi'<Esc>lel
 "映射了连续操作，成对的引号插件不生效不影响
-nnoremap <leader>" bi"<ESC>ea"<ESC>
-nnoremap <leader>( bi(<ESC>ea)<ESC>
+"原来的方式在词首会通过b直接到上一词,同理就算换e也可能在词尾跑到下一词,viw可以限制在本词
+nnoremap <leader>" viw<esc>a"<ESC>hbi"<Esc>lel
+nnoremap <leader>( viw<esc>a)<ESC>hbi(<Esc>lel
+"nnoremap <leader>" bi"<ESC>ea"<ESC>
+"nnoremap <leader>( bi(<ESC>ea)<ESC>
 "快速关闭单个窗口
 nnoremap <leader>q <C-W>q
 "强退当前窗口
@@ -500,6 +505,7 @@ nmap <C-E> <END>
 "imap <C-A> <ESC>^i
 "imap <C-E> <ESC>$a
 "imap <C-K> <ESC>d$i
+"cmap <C-K> <shift><end>
 "map <C-A> ^
 "map <C-E> $
 "map <C-K> d$
