@@ -563,8 +563,10 @@ map <A-LeftMouse> <C-]>
 
 map! <A-LeftMouse> <Esc><C-]>
 "在mac下iterm终端标题中中显示文件名称
-autocmd BufEnter *.* exe 'silent ! echo -ne "\033];%:t\007"'
-
+"===============================================
+"autocmd BufEnter *.* exe 'silent ! echo -ne "\033];%:t\007"'
+"原来这么久的闪屏是因为这个
+"===============================================
 "支持鼠标
 
 set mouse=a
