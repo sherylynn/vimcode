@@ -59,6 +59,7 @@ let mapleader = ' '
 let g:mapleader = ' '
 " Make sure you use single quotes
 Plug 'junegunn/vim-easy-align'
+Plug 'jceb/vim-orgmode'
 " Plugin options
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 "浏览树
