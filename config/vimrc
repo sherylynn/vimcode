@@ -59,7 +59,14 @@ let mapleader = ' '
 let g:mapleader = ' '
 " Make sure you use single quotes
 Plug 'junegunn/vim-easy-align'
-Plug 'jceb/vim-orgmode'
+"Plug 'jceb/vim-orgmode'
+"太旧，兼容性有问题
+"Plug 'hsitz/VimOrganizer'
+"augroup orgmode
+"  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+"  autocmd BufEnter *.org call org#SetOrgFileType()
+"augroup END
+
 " Plugin options
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 "浏览树
@@ -418,6 +425,8 @@ nnoremap <silent> <Leader>wq :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
 nnoremap <silent> <Leader>ee :call Edit_vimcode()<cr>
+"editor install
+nnoremap <silent> <Leader>ei :PlugInstall<cr>
 nnoremap <silent> <Leader>er :call Cd_source()<cr>
 "edit load editfile
 nnoremap <silent> <Leader>el :source %<cr>
