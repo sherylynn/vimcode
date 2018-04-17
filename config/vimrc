@@ -520,8 +520,12 @@ set nolist
 " import emacs map
 imap <C-A> <HOME>
 imap <C-E> <END>
+imap <C-b> <Left>
+imap <C-f> <right>
 cmap <C-A> <HOME>
 cmap <C-E> <END>
+cmap <C-b> <Left>
+cmap <C-f> <right>
 nmap <C-A> <HOME>
 nmap <C-E> <END>
 "imap <C-A> <ESC>^i
