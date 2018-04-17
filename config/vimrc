@@ -80,6 +80,8 @@ Plug 'junegunn/vim-easy-align'
 "-------------------------------------
 " Plugin options
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+" emacs
+Plug 'sherylynn/vim-emacs'
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
