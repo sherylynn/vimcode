@@ -538,6 +538,7 @@ nmap <C-E> <END>
 " git Command git使用
 " gca 开启提交 cc进入commit :wq保存提交
 " gp 推送
+nnoremap gco :AsyncRun git checkout .<CR>
 nnoremap gca :Gcommit -a -v<CR>
 "nnoremap gp  :Gpush <CR>
 "git push 这步阻塞太痛苦了，改成异步的
