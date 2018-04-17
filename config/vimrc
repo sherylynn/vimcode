@@ -511,24 +511,6 @@ set guioptions-=b
 " 使用内置tab样式而不是gui样式
 set guioptions-=e
 set nolist
-" import emacs map
-imap <C-A> <HOME>
-imap <C-E> <END>
-imap <C-b> <Left>
-imap <C-f> <right>
-cmap <C-A> <HOME>
-cmap <C-E> <END>
-cmap <C-b> <Left>
-cmap <C-f> <right>
-nmap <C-A> <HOME>
-nmap <C-E> <END>
-"imap <C-A> <ESC>^i
-"imap <C-E> <ESC>$a
-"imap <C-K> <ESC>d$i
-"cmap <C-K> <shift><end>
-"map <C-A> ^
-"map <C-E> $
-"map <C-K> d$
 " git Command git使用
 " gca 开启提交 cc进入commit :wq保存提交
 " gp 推送
