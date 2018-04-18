@@ -655,6 +655,7 @@ set scrolloff=9    " Set  lines to the cursor - when moving vertically using j/k
 "快捷提交
 "nmap <leader>p <Plug>(Gpush)
 nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
 nnoremap <leader>pc :PlugClean<CR>
 "leader6 刷新编辑器
 nnoremap <leader>6 :call Cd_source()<CR> 
