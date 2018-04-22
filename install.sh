@@ -47,3 +47,8 @@ echo "It will take a long time, just be patient!"
 echo "npm i -g eslint --registry=http://registry.npm.taobao.org"
 npm i -g eslint eslint-plugin-vue eslint_d eslint-plugin-babel eslint-plugin-react eslint-plugin-react-native babel-eslint eslint-config-airbnb  --registry=http://registry.npm.taobao.org
 echo "Install Done!"
+
+echo "Final install autokey"
+sudo apt install autokey -y
+for i in $HOME/.config/autokey/data/autokey_emacs ; do [ -L $i  ] && unlink $i ; done
+lnif $CURRENT_DIR/autokey_emacs "$HOME/.config/autokey/data/autokey_emacs"
