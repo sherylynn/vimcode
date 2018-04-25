@@ -355,7 +355,7 @@ set wildignore=vendor/**,bower_components/**,node_modules/**
 
 let g:used_javascript_libs = 'jQuery,AngularJS,AngularUI,RequireJS'
 
-set ignorecase
+set ignorecase smartcase
 
 let g:acp_behaviorKeywordCommand="\<C-n>"
 
