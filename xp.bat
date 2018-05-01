@@ -1,10 +1,21 @@
+ï»¿::cd %USERPROFILE%
+::git pull http://github.com/sherylynn/vimcode .vim
+::cd %USERPROFILE%/.vim
+::echo let g:VIMHOME=".vim" > ../.vimrc
+::echo source %USERPROFILE%\.vim\config\vimrc >> ../.vimrc
+
 cd %USERPROFILE%
-git pull http://github.com/sherylynn/vimcode .vim
-cd %USERPROFILE%/.vim
-::call cat config/_vimrc > ../.vimrc
+git pull http://github.com/sherylynn/vimcode vimcode
+cd %USERPROFILE%/vimcode
 echo let g:VIMHOME=".vim" > ../.vimrc
-::ÆäËûÉè¶¨Èç¹ûÉè¼ÆºóÃæµÄ£¬µÃÔÚsource¼ÓÔØÇ°¼ÓÔØ
-echo source %USERPROFILE%\.vim\config\vimrc >> ../.vimrc
+echo source %USERPROFILE%\vimcode\config\vimrc >> ../.vimrc
+::guifontå’Œåé¢çš„å†…å®¹ä¸èƒ½æœ‰ç©ºæ ¼
+echo set guifont=Courier_new:h15:b >> ../.vimrc
+
+
+::call cat config/_vimrc > ../.vimrc
+::å…¶ä»–è®¾å®šå¦‚æœè®¾è®¡åé¢çš„ï¼Œå¾—åœ¨sourceåŠ è½½å‰åŠ è½½
+
 mkdir autoload
 cd autoload
 call curl -fLo plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
