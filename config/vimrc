@@ -7,13 +7,13 @@ let g:completor='asyncomplete'
 "let g:completor='autocomplpop'
 "let g:completor='completor'
 "加载路径
-let $DOTFILE=expand("$HOME/vimcode")
-let $BUNDLE =expand("$DOTFILE/plugged")
-let $PLUG_DIR=expand("$DOTFILE/autoload")
+let $VIMHOME=expand("$HOME/vimcode")
+let $BUNDLE =expand("$VIMHOME/plugged")
+let $PLUG_DIR=expand("$VIMHOME/autoload")
 let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
 if empty(glob($PLUG_VIM))
 if has('win32')||has('win64')
-  cd $DOTFILE
+  cd $VIMHOME
   let $PLUG_VIM="autoload/plug.vim"
 else
   "如果是其他系统不需要调整路径
@@ -663,8 +663,8 @@ nnoremap <leader>pc :PlugClean<CR>
 nnoremap <leader>6 :call Cd_source()<CR> 
 if !exists("*Edit_vimcode")
 func Edit_vimcode()
-  :cd $DOTFILE
-  :tabedit $DOTFILE/config/vimrc
+  :cd $VIMHOME
+  :tabedit $VIMHOME/config/vimrc
 endfunc
 endif
 if !exists("*Cd_source")

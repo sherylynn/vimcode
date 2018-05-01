@@ -1,1 +1,2 @@
 source vimcode/config/vimrc
+let $VIMHOME=$HOME . "/vimcode"
