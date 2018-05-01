@@ -7,10 +7,11 @@
 cd %USERPROFILE%
 git pull http://github.com/sherylynn/vimcode vimcode
 cd %USERPROFILE%/vimcode
-echo let g:VIMHOME=".vim" > ../.vimrc
+echo let g:VIMHOME="vimcode" > ../.vimrc
 echo source %USERPROFILE%\vimcode\config\vimrc >> ../.vimrc
 ::guifont和后面的内容不能有空格
 echo set guifont=Courier_new:h15:b >> ../.vimrc
+echo set ff=unix >> ../.vimrc
 
 
 ::call cat config/_vimrc > ../.vimrc
