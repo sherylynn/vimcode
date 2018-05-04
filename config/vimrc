@@ -650,12 +650,18 @@ set scrolloff=9    " Set  lines to the cursor - when moving vertically using j/k
 
 "test2
 "Pangu chinese
+func! PanGu_self()
+  "把非段首的空白全部删除
+  "搜索空白 反向不匹配句首连续空白
+  :%s/\v (^ *)@<!//g
+  :call PanGuSpacing()
+endfunc 
 func! PanGu_Full()
   :call PanGuSpacing()
   "段首加俩全角空格
   :g!/^$/s/^/　　/
 endfunc 
-nnoremap <leader>pg :call PanGuSpacing()<CR>
+nnoremap <leader>pg :call PanGu_self()<CR>
 "nmap <leader>p <Plug>(Gpush)
 nnoremap <leader>pi :PlugInstall<CR>
 nnoremap <leader>pu :PlugUpdate<CR>
