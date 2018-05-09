@@ -84,6 +84,8 @@ Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 Plug 'sherylynn/vim-elisp'
 " auto update 
 Plug 'sherylynn/vim-update'
+" game
+Plug 'johngrib/vim-game-snake'
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
