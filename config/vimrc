@@ -422,6 +422,8 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>g :Ag<CR>
 nnoremap <silent> <Leader>s :FlyGrep<CR>
+"leader search help
+nnoremap <silent> <Leader>sh yiw:h <C-R>"<CR>
 "mobile leader>t 已经被test占用,windows qwe 代表左中右
 nnoremap <silent> <Leader>wq :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
