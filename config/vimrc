@@ -446,9 +446,6 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
 nmap <Leader>a <Plug>(EasyAlign)
 
-"快速关闭
-
-map <S-Q> :qa<CR>
 
 nnoremap <c-]> g<c-]>
 
@@ -479,8 +476,10 @@ nnoremap <leader>( viw<esc>a)<ESC>hbi(<Esc>lel
 "nnoremap <leader>( bi(<ESC>ea)<ESC>
 "快速关闭单个窗口
 nnoremap <leader>q <C-W>q
-"强退当前窗口
-nnoremap <leader>Q <C-W>q!
+"强退当前窗口 <C-W>q!
+nnoremap <leader>Q :q!<CR>
+"快速关闭
+map <S-Q> :qa<CR>
 "多窗口切换
 "ctrl是修饰键可以按住不动的使用
 "leader只生效一次，需要不断重新敲击
