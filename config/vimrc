@@ -84,6 +84,8 @@ Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 Plug 'sherylynn/vim-elisp'
 " auto update 
 Plug 'sherylynn/vim-update'
+"rpg game for vimer
+Plug 'sherylynn/vimer-rpg'
 " game
 Plug 'johngrib/vim-game-snake'
 "浏览树
