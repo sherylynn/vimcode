@@ -87,7 +87,7 @@ Plug 'sherylynn/vim-update'
 "rpg game for vimer
 Plug 'sherylynn/vimer-rpg'
 " game
-Plug 'johngrib/vim-game-snake'
+Plug 'sherylynn/vim-game-snake'
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
