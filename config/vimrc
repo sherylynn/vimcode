@@ -497,8 +497,8 @@ nmap <Leader>wk <C-W><C-K>
 nmap <Leader>wl <C-W><C-L>
 "tab窗口的切换移动
 nmap <silent><tab>h :tabp<cr>
-nmap <silent><tab>j :tabnew<cr>
-nmap <silent><tab>k :tabclose<cr>
+nmap <silent><tab>j :tabclose<cr>
+nmap <silent><tab>k :tabnew<cr>
 nmap <silent><tab>l :tabn<cr>
 nmap <silent><s-tab> :tabnext<cr>
 " 分割出的窗口 在下边或右边
