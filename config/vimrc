@@ -82,6 +82,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 " emacs
 Plug 'sherylynn/vim-elisp'
+Plug 'tweekmonster/startuptime.vim'
 " auto update 
 Plug 'sherylynn/vim-update'
 augroup LynnPlugUpdate
