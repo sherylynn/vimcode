@@ -84,6 +84,13 @@ Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 Plug 'sherylynn/vim-elisp'
 " auto update 
 Plug 'sherylynn/vim-update'
+augroup LynnPlugUpdate
+  autocmd!
+  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
+  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
+  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
+  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
+augroup end
 "rpg game for vimer
 Plug 'sherylynn/vimer-rpg'
 " game
