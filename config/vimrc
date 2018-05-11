@@ -96,6 +96,7 @@ augroup end
 Plug 'sherylynn/vimer-rpg'
 " game
 Plug 'sherylynn/vim-game-snake'
+Plug 'thinca/vim-painter'
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
