@@ -717,6 +717,7 @@ augroup NodeJS
       let l:status=matchstr(system(l:dir_command),'\m\(' . a:filename . '\)\|\(such\)')
       if l:status==a:filename
         nnoremap <leader>t :AsyncRun npm test<CR>
+        nnoremap <leader>i :AsyncRun npm install<CR>
         nnoremap <leader>b :AsyncRun npm run build<CR>
         nnoremap <leader>r :AsyncRun npm run start<CR>
         nnoremap <leader>d :AsyncRun npm run dev<CR>
