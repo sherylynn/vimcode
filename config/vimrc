@@ -94,7 +94,7 @@ augroup LynnPlugUpdate
   autocmd VimEnter * nested call GitPullable(expand('.'))
 augroup end
 "rpg game for vimer
-Plug 'sherylynn/vimer-rpg'
+Plug 'sherylynn/vimer-rpg' ,{ 'do': 'sudo apt install fonts-noto-color-emoji' }
 " game
 Plug 'sherylynn/vim-game-snake'
 Plug 'thinca/vim-painter'
