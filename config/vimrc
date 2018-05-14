@@ -81,7 +81,11 @@ Plug 'junegunn/vim-easy-align'
 " Plugin options
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
 " emacs
-Plug 'sherylynn/vim-elisp' , {'for':'el'}
+Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
+augroup orgmode
+  autocmd!
+  autocmd BufNewFile,BufRead *.org set filetype=org
+augroup END
 Plug 'tweekmonster/startuptime.vim'
 " auto update 
 Plug 'sherylynn/vim-update'
