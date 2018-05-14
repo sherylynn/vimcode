@@ -704,7 +704,12 @@ endif
 map <leader>5 :call Edit_vimcode()<CR>
 "leader+7 预览markdown 需要python和插件支持
 nnoremap <leader>7 :MarkdownPreview<cr>
+augroup batcmd
+  autocmd!
+  autocmd FileType bat nnoremap <leader>r :!cmd.exe %
+augroup END
 augroup gocmd
+  autocmd!
   autocmd FileType go nmap <leader>t <Plug>(go-test)
   autocmd FileType go nmap <leader>b <Plug>(go-build)
   autocmd FileType go nmap <leader>r <Plug>(go-run)
