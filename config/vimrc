@@ -535,6 +535,7 @@ nnoremap gc. :AsyncRun git checkout .<CR>
 nnoremap gca :Gcommit -a -v<CR>
 "nnoremap gp  :Gpush <CR>
 "git push 这步阻塞太痛苦了，改成异步的
+nnoremap gr :bufdo :e!<CR>
 nnoremap gl :AsyncRun git pull<CR>
 nnoremap gs :Gstatus<CR>
 nnoremap gp :AsyncRun git push<CR>
