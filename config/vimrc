@@ -437,7 +437,7 @@ let g:user_emmet_settings = {"lang":"zh-cn"}
 
 "silent是指执行后面的命令时不显示在命令栏
 nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
+"nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>g :Ag<CR>
 nnoremap <silent> <Leader>s :FlyGrep<CR>
 "leader search help
