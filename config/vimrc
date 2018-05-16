@@ -394,6 +394,7 @@ let g:tagbar_width=20
 "autocmd vimenter * NERDTree
 "颜色主题设置
 set background=dark
+"colorscheme solarized8
 colorscheme codedark
 let g:airline_theme='codedark'
 let g:tcc="codedark"
