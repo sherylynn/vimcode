@@ -482,6 +482,7 @@ let g:multi_cursor_quit_key='<Esc>'
 cnoremap <leader>v <C-R>"
 nnoremap <leader>v "+p
 vnoremap <leader>c "+y
+nnoremap <silent><leader>c :lcd %:p:h<CR>
 vnoremap <leader>x "+x
 "添加括号
 "这个规则和下个规则实际效果一致
