@@ -102,7 +102,7 @@ augroup END
 "-------------------------------------------
 " auto update 
 Plug 'sherylynn/vim-update'
-let g:AutoUpdate=0
+let g:AutoUpdate=1
 if g:AutoUpdate==1 
   augroup LynnPlugUpdate
     autocmd!
