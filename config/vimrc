@@ -102,14 +102,17 @@ augroup END
 "-------------------------------------------
 " auto update 
 Plug 'sherylynn/vim-update'
-augroup LynnPlugUpdate
-  autocmd!
-  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
-  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
-  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
-  autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
-  autocmd VimEnter * nested call GitPullable(expand('.'))
-augroup end
+let g:AutoUpdate=0
+if g:AutoUpdate==1 
+  augroup LynnPlugUpdate
+    autocmd!
+    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
+    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
+    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
+    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
+    autocmd VimEnter * nested call GitPullable(expand('.'))
+  augroup end
+endif
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
@@ -117,11 +120,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-scripts/Tagbar'
 "Bundle 'minibufexpl.vim'
 "------------------------------web-----------------------
-Plug 'https://github.com/burnettk/vim-angular.git'
+"Plug 'https://github.com/burnettk/vim-angular.git'
 "jsx插件
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx',{'for':['js','jsx']}
 "css color
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color',{'for':['html','js']}
 "zencoding 改名为了 Emmet
 Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','js']}
 Plug 'vim-scripts/WebAPI.vim',{'for':['html','js']}
@@ -134,11 +137,11 @@ Plug 'vim-scripts/WebAPI.vim',{'for':['html','js']}
 "Plug 'vim-scripts/xml.vim'
 "安装此插件解决macvim下没有加号寄存器的问题。
 "Plug 'https://github.com/kana/vim-fakeclip.git'
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue',{'for':'vue'}
 "微软typerscript支持，高亮
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim',{'for':'ts'}
 "ts的功能插件
-Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/tsuquyomi',{'for':'ts'}
 "------------------------------web-------------------------
 "模糊搜索软件
 if has('win32') || has('win64')
@@ -148,7 +151,8 @@ else
 endif
 Plug 'junegunn/fzf.vim'
 "国人出品 flygrep 功能类似the-silver-searcher
-Plug 'wsdjeg/flygrep.vim'
+"Plug 'wsdjeg/flygrep.vim'
+"nnoremap <silent> <Leader>s :FlyGrep<CR>
 
 "Plug 'tomasr/molokai'
 Plug 'lifepillar/vim-solarized8'
@@ -169,7 +173,7 @@ Plug 'pangloss/vim-javascript',{'for':['html','js']}
 
 if g:completor=='asyncomplete'||g:completor=='autocomplpop'
   "tern js 补全
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install','for':'js'}
 endif
 
 "Plug 'terryma/vim-multiple-cursors'
@@ -215,7 +219,7 @@ Plug 'terryma/vim-expand-region'
 "异步执行命令
 Plug 'skywind3000/asyncrun.vim'
 "编译任务插件
-Plug 'skywind3000/vimmake'
+"Plug 'skywind3000/vimmake'
 "-------------------------特殊项目---------------
 "Plug 'hsanson/vim-android'
 "Plug 'chemzqm/wxapp.vim'
@@ -249,7 +253,7 @@ if has('python3')
   "  "Plug 'Shougo/neosnippet-snippets'
   "  "---------------------------------------
   "  "--------ternjs-----------------
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' ,'for':'js'}
     let g:deoplete#sources#ternjs#types = 1
 
     let g:deoplete#sources#ternjs#depths = 1
@@ -449,7 +453,6 @@ let g:user_emmet_settings = {"lang":"zh-cn"}
 nnoremap <silent> <Leader>f :Files<CR>
 "nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>g :Ag<CR>
-nnoremap <silent> <Leader>s :FlyGrep<CR>
 "leader search help
 nnoremap <silent> <Leader>sh yiw:h <C-R>"<CR>
 "mobile leader>t 已经被test占用,windows qwe 代表左中右
