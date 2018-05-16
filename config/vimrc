@@ -58,7 +58,6 @@ call plug#begin(expand($BUNDLE))
 let mapleader = ' '
 let g:mapleader = ' '
 " Make sure you use single quotes
-Plug 'junegunn/vim-easy-align'
 "----------------------------------------
 "Plug 'jceb/vim-orgmode'
 "Plug 'akstrfn/vim-orgmode'
@@ -86,7 +85,21 @@ augroup orgmode
   autocmd!
   autocmd BufNewFile,BufRead *.org set filetype=org
 augroup END
-Plug 'tweekmonster/startuptime.vim'
+"为了启动时间-------------------------------
+"Plug 'tweekmonster/startuptime.vim'
+"Plug 'junegunn/vim-easy-align'
+"快速对齐
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+"vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+"nmap <Leader>a <Plug>(EasyAlign)
+"rpg game for vimer
+"Plug 'sherylynn/vimer-rpg' ,{ 'do': 'sudo apt install fonts-noto-color-emoji' }
+" game
+"Plug 'sherylynn/vim-game-snake'
+"Plug 'thinca/vim-painter'
+"-------------------------------------------
 " auto update 
 Plug 'sherylynn/vim-update'
 augroup LynnPlugUpdate
@@ -97,20 +110,36 @@ augroup LynnPlugUpdate
   autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
   autocmd VimEnter * nested call GitPullable(expand('.'))
 augroup end
-"rpg game for vimer
-Plug 'sherylynn/vimer-rpg' ,{ 'do': 'sudo apt install fonts-noto-color-emoji' }
-" game
-Plug 'sherylynn/vim-game-snake'
-Plug 'thinca/vim-painter'
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-scripts/Tagbar'
 "Bundle 'minibufexpl.vim'
-
+"------------------------------web-----------------------
+Plug 'https://github.com/burnettk/vim-angular.git'
+"jsx插件
+Plug 'mxw/vim-jsx'
+"css color
+Plug 'ap/vim-css-color'
 "zencoding 改名为了 Emmet
-Plug 'https://github.com/luofei614/Emmet.vim'
+Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','js']}
+Plug 'vim-scripts/WebAPI.vim',{'for':['html','js']}
+" jquery , angularjs 等语法
+"Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+
+"css私有前缀
+"Plug 'vim-scripts/prefixer.vim'
+"能缩减HTML代码
+"Plug 'vim-scripts/xml.vim'
+"安装此插件解决macvim下没有加号寄存器的问题。
+"Plug 'https://github.com/kana/vim-fakeclip.git'
+Plug 'posva/vim-vue'
+"微软typerscript支持，高亮
+Plug 'leafgarland/typescript-vim'
+"ts的功能插件
+Plug 'Quramy/tsuquyomi'
+"------------------------------web-------------------------
 "模糊搜索软件
 if has('win32') || has('win64')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'go build && mv ./main.exe ./bin/fzf.exe' }
@@ -120,9 +149,6 @@ endif
 Plug 'junegunn/fzf.vim'
 "国人出品 flygrep 功能类似the-silver-searcher
 Plug 'wsdjeg/flygrep.vim'
-Plug 'vim-scripts/WebAPI.vim'
-
-Plug 'vim-scripts/Gist.vim'
 
 "Plug 'tomasr/molokai'
 Plug 'lifepillar/vim-solarized8'
@@ -130,49 +156,36 @@ Plug 'lifepillar/vim-solarized8'
 "原作者的不能使用了 发现换一个人也不行 原来是colorschemey应该放外面
 "Plug 'tomasiser/vim-code-dark'
 Plug 'dunstontc/vim-code-dark'
-Plug 'dunstontc/vim-vscode-theme'
+
+"Plug 'dunstontc/vim-vscode-theme'
 "colorscheme dark_plus
 
 "bookmark  mm 添加书签,  mn 移动书签  mp 移动到前一个书签  ma 删除所有书签
-Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'MattesGroeger/vim-bookmarks'
 
 
 "Bundle 'JavaScript-syntax'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript',{'for':['html','js']}
 
 if g:completor=='asyncomplete'||g:completor=='autocomplpop'
   "tern js 补全
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 endif
-" jquery , angularjs 等语法
-Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 
-"css私有前缀
-Plug 'vim-scripts/prefixer.vim'
-"能缩减HTML代码
-Plug 'vim-scripts/xml.vim'
-"安装此插件解决macvim下没有加号寄存器的问题。
-Plug 'https://github.com/kana/vim-fakeclip.git'
-
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 "snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'https://github.com/bonsaiben/bootstrap-snippets.git'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
+"Plug 'https://github.com/bonsaiben/bootstrap-snippets.git'
 
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 
-Plug 'https://github.com/burnettk/vim-angular.git'
 
 "切换到 ale
 Plug 'w0rp/ale'
-"jsx插件
-Plug 'mxw/vim-jsx'
-"css color
-Plug 'ap/vim-css-color'
 " {}
 Plug 'jiangmiao/auto-pairs'
 "</>
@@ -203,13 +216,10 @@ Plug 'terryma/vim-expand-region'
 Plug 'skywind3000/asyncrun.vim'
 "编译任务插件
 Plug 'skywind3000/vimmake'
-Plug 'hsanson/vim-android'
-Plug 'chemzqm/wxapp.vim'
-Plug 'posva/vim-vue'
-"微软typerscript支持，高亮
-Plug 'leafgarland/typescript-vim'
-"ts的功能插件
-Plug 'Quramy/tsuquyomi'
+"-------------------------特殊项目---------------
+"Plug 'hsanson/vim-android'
+"Plug 'chemzqm/wxapp.vim'
+"-----------------------------------------------j
 "彩虹括号
 Plug 'luochen1990/rainbow'
 "插件在切换buffer时有问题，所以设定成关闭然后手动呼唤
@@ -220,7 +230,7 @@ Plug 'tpope/vim-markdown',{'for':'markdown'}
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 "formate js
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'js' }
 "中文排版规范化用法  :PanGu
 Plug 'hotoo/pangu.vim'
 "异步补全，需要python3
@@ -453,16 +463,10 @@ nnoremap <silent> <Leader>er :call Cd_source()<cr>
 nnoremap <silent> <Leader>el :source %<cr>
 "add comment to vimrc
 nnoremap <silent> <Leader>ec 0i"<Esc>
-"change comment to  commond vimrc
+"change comment to  command vimrc
 nnoremap <silent> <Leader>ei 0x
 "nnoremap <silent> <Leader>v :Tags<CR>
 
-"快速对齐
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
-nmap <Leader>a <Plug>(EasyAlign)
 
 
 nnoremap <c-]> g<c-]>
