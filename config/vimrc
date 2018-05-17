@@ -700,7 +700,7 @@ nnoremap <leader>pc :PlugClean<CR>
 nnoremap <leader>6 :call Cd_source()<CR> 
 if !exists("*Edit_vimcode")
 func Edit_vimcode()
-  :cd $VIMHOME
+  :lcd $VIMHOME
   :tabedit $VIMHOME/config/vimrc
 endfunc
 endif
