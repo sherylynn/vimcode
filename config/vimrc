@@ -122,26 +122,34 @@ Plug 'vim-scripts/Tagbar'
 "------------------------------web-----------------------
 "Plug 'https://github.com/burnettk/vim-angular.git'
 "jsx插件
-Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
+"Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
+Plug 'mxw/vim-jsx'
 "css color
-Plug 'ap/vim-css-color',{'for':['html','javascript']}
+"Plug 'ap/vim-css-color',{'for':['html','javascript']}
+Plug 'ap/vim-css-color'
 "zencoding 改名为了 Emmet
-Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','javascript']}
-Plug 'vim-scripts/WebAPI.vim',{'for':['html','javascript']}
+"Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','javascript']}
+Plug 'https://github.com/luofei614/Emmet.vim'
+"Plug 'vim-scripts/WebAPI.vim',{'for':['html','javascript']}
+Plug 'vim-scripts/WebAPI.vim'
 " jquery , angularjs 等语法
 "Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 
 "css私有前缀
-"Plug 'vim-scripts/prefixer.vim'
+Plug 'vim-scripts/prefixer.vim'
 "能缩减HTML代码
-"Plug 'vim-scripts/xml.vim'
+Plug 'vim-scripts/xml.vim'
 "安装此插件解决macvim下没有加号寄存器的问题。
 "Plug 'https://github.com/kana/vim-fakeclip.git'
-Plug 'posva/vim-vue',{'for':'vue'}
+"Plug 'posva/vim-vue',{'for':'vue'}
+Plug 'posva/vim-vue'
 "微软typerscript支持，高亮
-Plug 'leafgarland/typescript-vim',{'for':'ts'}
+"Plug 'leafgarland/typescript-vim',{'for':'ts'}
+Plug 'leafgarland/typescript-vim'
 "ts的功能插件
-Plug 'Quramy/tsuquyomi',{'for':'ts'}
+"Plug 'Quramy/tsuquyomi',{'for':'ts'}
+Plug 'Quramy/tsuquyomi'
 "------------------------------web-------------------------
 "模糊搜索软件
 if has('win32') || has('win64')
@@ -169,11 +177,13 @@ Plug 'dunstontc/vim-code-dark'
 
 
 "Bundle 'JavaScript-syntax'
-Plug 'pangloss/vim-javascript',{'for':['html','javascript']}
+"Plug 'pangloss/vim-javascript',{'for':['html','javascript']}
+Plug 'pangloss/vim-javascript'
 
 if g:completor=='asyncomplete'||g:completor=='autocomplpop'
   "tern js 补全
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install','for':'javascript'}
+"  Plug 'ternjs/tern_for_vim', {'do': 'npm install','for':'javascript'}
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 endif
 
 "Plug 'terryma/vim-multiple-cursors'
@@ -234,7 +244,8 @@ Plug 'tpope/vim-markdown',{'for':'markdown'}
 Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
 Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 "formate js
-Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
+"Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 "中文排版规范化用法  :PanGu
 Plug 'hotoo/pangu.vim'
 "异步补全，需要python3
@@ -253,7 +264,8 @@ if has('python3')
   "  "Plug 'Shougo/neosnippet-snippets'
   "  "---------------------------------------
   "  "--------ternjs-----------------
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' ,'for':'javascript'}
+"    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' ,'for':'javascript'}
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     let g:deoplete#sources#ternjs#types = 1
 
     let g:deoplete#sources#ternjs#depths = 1
