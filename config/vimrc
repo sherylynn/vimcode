@@ -79,12 +79,6 @@ let g:mapleader = ' '
 "-------------------------------------
 " Plugin options
 Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
-" emacs
-Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
-augroup orgmode
-  autocmd!
-  autocmd BufNewFile,BufRead *.org set filetype=org
-augroup END
 "为了启动时间-------------------------------
 "Plug 'tweekmonster/startuptime.vim'
 "Plug 'junegunn/vim-easy-align'
@@ -100,6 +94,15 @@ augroup END
 "Plug 'sherylynn/vim-game-snake'
 "Plug 'thinca/vim-painter'
 "-------------------------------------------
+" emacs
+"Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
+Plug 'sherylynn/vim-elisp' 
+augroup orgmode
+  autocmd!
+  autocmd BufNewFile,BufRead *.org set filetype=org
+augroup END
+" nodejs
+Plug 'sherylynn/vim-nodejs'
 " auto update 
 Plug 'sherylynn/vim-update'
 let g:AutoUpdate=1
