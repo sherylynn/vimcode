@@ -558,6 +558,7 @@ set nolist
 nnoremap gcm :AsyncRun git checkout master<CR>
 nnoremap gc. :AsyncRun git checkout .<CR>
 nnoremap gca :Gcommit -a -v<CR>
+nnoremap gcf :AsyncRun git commit -m "fix" -a<CR>
 "nnoremap gp  :Gpush <CR>
 "git push 这步阻塞太痛苦了，改成异步的
 nnoremap gr :bufdo :e!<CR>
