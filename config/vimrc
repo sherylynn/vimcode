@@ -112,6 +112,7 @@ if g:AutoUpdate==1
     autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
     autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
     autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
+    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-nodejs'))
     autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
     autocmd VimEnter * nested call GitPullable(expand('.'))
   augroup end
