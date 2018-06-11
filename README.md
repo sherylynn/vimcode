@@ -76,4 +76,4 @@ windows下把install.sh改为 install.bat即可
 * tab : 补全
 
 
-
+最近ale 导致termux下vim无法触屏点击，先屏蔽
