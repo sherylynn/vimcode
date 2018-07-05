@@ -172,7 +172,8 @@ Plug 'junegunn/fzf.vim'
 "原作者的不能使用了 发现换一个人也不行 原来是colorschemey应该放外面
 "Plug 'tomasiser/vim-code-dark'
 "Plug 'dunstontc/vim-code-dark'
-Plug 'DNonov/vim-code-dark'
+"Plug 'DNonov/vim-code-dark'
+Plug 'sherylynn/vim-code-dark'
 Plug 'rafi/awesome-vim-colorschemes'
 
 "Plug 'dunstontc/vim-vscode-theme'
