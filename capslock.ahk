@@ -9,6 +9,7 @@ CapsLock & d::SendInput {Delete}
 CapsLock & k::SendInput, +{End}^{x}
 CapsLock & y::SendInput, ^{v}
 CapsLock & r::SendInput, ^{f}
+Ctrl & [::SendInput {Esc}
 ;CapsLock & c::SendInput {Esc}
 ;CapsLock & c::SendInput, ^{[}
 CapsLock & c::SendInput, ^{C}
