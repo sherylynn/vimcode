@@ -215,6 +215,7 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-scripts/matchit.zip'
 "python-mode
 Plug 'python-mode/python-mode'
+let g:pymode_python='python3'
 "Go 插件
 Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
 let g:go_highlight_types=1
