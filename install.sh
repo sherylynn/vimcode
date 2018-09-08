@@ -11,7 +11,7 @@ lnif() {
 
 echo "Step0: install dependencies "
 sudo apt-get install curl silversearcher-ag ctags vim python3-pip
-sudo yum install the_silver_searcher ctags vim
+sudo yum install the_silver_searcher ctags vim -y
 brew install the_silver_searcher ctags vim
 
 echo "Step1: backing up current vim config"
