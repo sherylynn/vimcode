@@ -10,10 +10,12 @@ lnif() {
 }
 
 echo "Step0: install dependencies "
-sudo apt-get install curl silversearcher-ag ctags vim python3-pip -y
+sudo apt install curl silversearcher-ag ctags vim python3-pip -y
 sudo yum install the_silver_searcher ctags vim -y
 brew install the_silver_searcher ctags vim
 emerge dev-util/ctags the_silver_searcher vim
+#termux
+pkg install silversearcher-ag fzf
 
 echo "Step1: backing up current vim config"
 today=`date +%Y%m%d`
