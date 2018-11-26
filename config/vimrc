@@ -214,7 +214,7 @@ Plug 'alvan/vim-closetag'
 "beauty
 Plug 'vim-scripts/matchit.zip'
 "python-mode
-Plug 'python-mode/python-mode',{'branch':'develop'}
+Plug 'sherylynn/python-mode',{'branch':'develop'}
 let g:pymode_python='python3'
 "Go 插件
 Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
