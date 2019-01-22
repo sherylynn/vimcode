@@ -151,6 +151,7 @@ Plug 'posva/vim-vue'
 "微软typerscript支持，高亮
 "Plug 'leafgarland/typescript-vim',{'for':'ts'}
 Plug 'leafgarland/typescript-vim'
+Plug 'OmniSharp/omnisharp-vim'
 "ts的功能插件
 "Plug 'Quramy/tsuquyomi',{'for':'ts'}
 Plug 'Quramy/tsuquyomi'
@@ -744,6 +745,11 @@ augroup batcmd
   autocmd!
   autocmd FileType bat nnoremap <leader>r :!cmd.exe %
 augroup END
+augroup cscmd
+  autocmd!
+  autocmd FileType cs nmap <leader>r :AsyncRun dotnet run<CR>
+  autocmd FileType cs nmap <leader>b :AsyncRun dotnet build<CR>
+augroup END
 augroup gocmd
   autocmd!
   autocmd FileType go nmap <leader>t <Plug>(go-test)
@@ -781,6 +787,7 @@ augroup END
 let g:airline#extensions#ale#enabled = 1
 "自动完成
 let g:ale_completion_enabled = 1
+let g:ale_linters = { 'cs': ['OmniSharp'] }
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
