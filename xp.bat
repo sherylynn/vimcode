@@ -36,3 +36,7 @@ mkdir autoload
 cd autoload
 
 call curl -fLo plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+cd %USERPROFILE%/vimcode
+call proxy.bat
+call vim -c "GoInstallBinaries" -c "qa"

@@ -1,15 +1,17 @@
 @echo 
 echo 开始安装依赖
-set http_proxy=http://127.0.0.1:8087
-set https_proxy=http://127.0.0.1:8087
-git config http.proxy http://127.0.0.1:8087
+set port=10808
+set http_proxy=http://127.0.0.1:%port%
+set https_proxy=http://127.0.0.1:%port%
+git config http.proxy http://127.0.0.1:%port%
 :: update=-u就是强制更新
 set update=
 go get %update% github.com/klauspost/asmfmt/cmd/asmfmt
 go get %update% github.com/derekparker/delve/cmd/dlv
 go get %update% github.com/kisielk/errcheck
 go get %update% github.com/davidrjenni/reftools/cmd/fillstruct
-go get %update% -ldflags -H=windowsgui github.com/nsf/gocode
+go get %update% -u -ldflags -H=windowsgui github.com/mdempsky/gocode
+:: go get %update% -ldflags -H=windowsgui github.com/nsf/gocode
 go get %update% github.com/rogpeppe/godef
 go get %update% github.com/zmb3/gogetdoc
 go get %update% golang.org/x/tools/cmd/goimports

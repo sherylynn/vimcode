@@ -78,7 +78,9 @@ let g:mapleader = ' '
 "Plug 'vim-voom/VOoM'
 "-------------------------------------
 " Plugin options
-Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+" 原先的gocode不再支持
+" Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' ,'for':'go'}
 "为了启动时间-------------------------------
 "Plug 'tweekmonster/startuptime.vim'
 "Plug 'junegunn/vim-easy-align'
@@ -151,7 +153,7 @@ Plug 'posva/vim-vue'
 "微软typerscript支持，高亮
 "Plug 'leafgarland/typescript-vim',{'for':'ts'}
 Plug 'leafgarland/typescript-vim'
-Plug 'OmniSharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim',{'for':'cs'}
 "ts的功能插件
 "Plug 'Quramy/tsuquyomi',{'for':'ts'}
 Plug 'Quramy/tsuquyomi'
