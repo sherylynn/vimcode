@@ -5,7 +5,7 @@ set http_proxy=http://127.0.0.1:%port%
 set https_proxy=http://127.0.0.1:%port%
 git config http.proxy http://127.0.0.1:%port%
 :: update=-u就是强制更新
-set update=
+set update=-u
 go get %update% github.com/klauspost/asmfmt/cmd/asmfmt
 go get %update% github.com/derekparker/delve/cmd/dlv
 go get %update% github.com/kisielk/errcheck
