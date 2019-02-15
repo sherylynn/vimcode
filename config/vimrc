@@ -485,7 +485,10 @@ nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
 "terminal
-tnoremap jk <c-\><c-n>
+"if has terminal
+if has('terminal')
+  tnoremap jk <c-\><c-n>
+endif
 nnoremap <silent><leader>' :term<CR>
 "editor
 nnoremap <silent> <Leader>fed :call Edit_vimcode()<cr>
