@@ -13,6 +13,7 @@ go get %update% github.com/davidrjenni/reftools/cmd/fillstruct
 go get %update% -u -ldflags -H=windowsgui github.com/stamblerre/gocode
 :: go get %update% -u -ldflags -H=windowsgui github.com/mdempsky/gocode
 :: go get %update% -ldflags -H=windowsgui github.com/nsf/gocode
+go get %update% github.com/koron/iferr
 go get %update% github.com/rogpeppe/godef
 go get %update% github.com/zmb3/gogetdoc
 go get %update% golang.org/x/tools/cmd/goimports

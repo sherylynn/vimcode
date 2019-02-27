@@ -29,6 +29,7 @@ go get -u github.com/davidrjenni/reftools/cmd/fillstruct
 #go get -u github.com/mdempsky/gocode
 #for vim-go 
 go get -u github.com/stamblerre/gocode
+go get -u github.com/koron/iferr
 go get -u github.com/rogpeppe/godef
 go get -u github.com/zmb3/gogetdoc
 go get -u golang.org/x/tools/cmd/goimports
