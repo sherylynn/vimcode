@@ -7,6 +7,13 @@ echo source ~/vimcode/config/vimrc >> ../.vimrc
 echo set guifont=Courier_new:h15:b >> ../.vimrc
 echo set ff=unix >> ../.vimrc
 
+#   for neovim
+mkdir -p ../.config/nvim
+echo let g:VIMHOME=\"vimcode\" > ../.config/nvim/.vimrc
+echo source ~/vimcode/config/vimrc >> ../.config/nvim/.vimrc
+echo set guifont=Courier_new:h15:b >> ../.config/nvim/.vimrc
+echo set ff=unix >> ../.config/nvim/.vimrc
+
 
 #call cat config/_vimrc > ../.vimrc
 #其他设定如果设计后面的，得在source加载前加载
