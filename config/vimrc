@@ -98,6 +98,7 @@ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink
 "-------------------------------------------
 " emacs
 "Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
+set shortmess=at
 Plug 'sherylynn/vim-elisp' 
 augroup orgmode
   autocmd!
@@ -486,10 +487,10 @@ nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
 "terminal
 "if has terminal
-if has('terminal')
+if has('terminal') || has('nvim')
   tnoremap jk <c-\><c-n>
-  nnoremap <silent><leader>' :term<CR>
-  nnoremap <silent><leader>tt :term<CR>
+  nnoremap <silent><leader>' :terminal<CR>
+  nnoremap <silent><leader>tt :terminal<CR>
 endif
 "editor
 nnoremap <silent> <Leader>fed :call Edit_vimcode()<cr>
