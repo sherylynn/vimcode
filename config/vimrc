@@ -768,9 +768,9 @@ augroup cscmd
   autocmd FileType cs nmap <leader>r :AsyncRun dotnet run<CR>
   autocmd FileType cs nmap <leader>b :AsyncRun dotnet build<CR>
 augroup END
-augroup shcmd
+augroup bashcmd
   autocmd!
-  autocmd FileType sh nmap <leader>r :AsyncRun sh %<CR>
+  autocmd FileType sh nmap <leader>r :AsyncRun bash %<CR>
 augroup END
 augroup gocmd
   autocmd!
