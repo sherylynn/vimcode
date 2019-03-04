@@ -5,7 +5,7 @@ cd vimcode
 echo let g:VIMHOME=\"vimcode\" > ../.vimrc
 echo 'source ~/vimcode/config/vimrc' >> ../.vimrc
 #guifont和后面的内容不能有空格
-echo set guifont=Courier_new:h15:b >> ../.vimrc
+#echo set guifont=Courier_new:h15:b >> ../.vimrc
 echo set ff=unix >> ../.vimrc
 
 #   for neovim in unix
