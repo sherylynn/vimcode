@@ -237,6 +237,8 @@ if g:completor=="asyncomplete"
       \ 'cmd':{server_info->['go-langserver','-gocodecompletion']},
       \ 'whitelist':['go'],
       \ })
+  else
+    :! go get -u github.com/sourcegraph/go-langserver
   endif
   au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
   \ 'name':'buffer',
