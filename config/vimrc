@@ -110,15 +110,19 @@ Plug 'sherylynn/vim-nodejs'
 Plug 'sherylynn/vim-update'
 let g:AutoUpdate=1
 if g:AutoUpdate==1 
-  augroup LynnPlugUpdate
-    autocmd!
-    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
-    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
-    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
-    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-nodejs'))
-    autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
-    autocmd VimEnter * nested call GitPullable(expand('.'))
-  augroup end
+  if !exists("*GitPullable")
+    silent :PlugInstall<CR>
+  else
+    augroup LynnPlugUpdate
+      autocmd!
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-nodejs'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
+      autocmd VimEnter * nested call GitPullable(expand('.'))
+    augroup end
+  endif
 endif
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
