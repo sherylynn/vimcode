@@ -22,9 +22,6 @@ let g:mapleader = ' '
 "Plug 'vim-voom/VOoM'
 "-------------------------------------
 " Plugin options
-" 原先的gocode不再支持
-" Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' ,'for':'go'}
 "为了启动时间-------------------------------
 "Plug 'tweekmonster/startuptime.vim'
 "Plug 'junegunn/vim-easy-align'
@@ -76,9 +73,6 @@ Plug 'vim-scripts/Tagbar'
 "Bundle 'minibufexpl.vim'
 "------------------------------web-----------------------
 "Plug 'https://github.com/burnettk/vim-angular.git'
-"jsx插件
-"Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
-Plug 'mxw/vim-jsx'
 "css color
 "Plug 'ap/vim-css-color',{'for':['html','javascript']}
 Plug 'ap/vim-css-color'
@@ -97,15 +91,6 @@ Plug 'vim-scripts/prefixer.vim'
 Plug 'vim-scripts/xml.vim'
 "安装此插件解决macvim下没有加号寄存器的问题。
 "Plug 'https://github.com/kana/vim-fakeclip.git'
-"Plug 'posva/vim-vue',{'for':'vue'}
-Plug 'posva/vim-vue'
-"微软typerscript支持，高亮
-"Plug 'leafgarland/typescript-vim',{'for':'ts'}
-Plug 'leafgarland/typescript-vim'
-Plug 'OmniSharp/omnisharp-vim',{'for':'cs'}
-"ts的功能插件
-"Plug 'Quramy/tsuquyomi',{'for':'ts'}
-Plug 'Quramy/tsuquyomi'
 "------------------------------web-------------------------
 "模糊搜索软件
 if has('win32') || has('win64')
@@ -165,20 +150,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 "beauty
 Plug 'vim-scripts/matchit.zip'
-"python-mode
-Plug 'sherylynn/python-mode',{'branch':'develop'}
-let g:pymode_python='python3'
-"Go 插件
-Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
-let g:go_highlight_types=1
-let g:go_highlight_fields=1
-let g:go_highlight_functions=1
-let g:go_highlight_methods=1
-let g:go_highlight_operators=1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_metailinter_autosave=1
 "git 插件
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -249,101 +220,125 @@ if has('python3')
   endif
 endif
 "----------------------------补全器的依赖分开来弄
-if has('job')||has('job_start')
-  if g:completor=="asyncomplete"
-    "echom "开启asyncomplete"
-    "纯vimscript异步补全
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-buffer.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
-    Plug 'prabirshrestha/asyncomplete-gocode.vim'
-    Plug 'yami-beta/asyncomplete-omni.vim'
-    Plug 'runoshun/tscompletejob'
-    Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
-    if executable('pyls')
-      "sudo pip install python-language-server
-      au User lsp_setup call lsp#register_server({
-        \ 'name':'pyls',
-        \ 'cmd':{server_info->['pyls']},
-        \ 'whitelist':['python'],
-        \ })
-    endif
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name':'buffer',
-    \ 'whitelist':['*'],
-    \ 'blacklist':['go'],
-    \ 'completor':function('asyncomplete#sources#buffer#completor'),
-    \ }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \  'name':'file',
-    \  'whitelist':['*'],
-    \  'priority':10,
-    \  'completor':function('asyncomplete#sources#file#completor')
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
-    \  'name':'gocode',
-    \  'whitelist':['go'],
-    \  'completor':function('asyncomplete#sources#gocode#completor'),
-    \  'config':{
-    \    'gocode_path':expand('~/go/bin/gocode')
-    \  }
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-    \ 'name': 'omni',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['html'],
-    \ 'completor': function('asyncomplete#sources#omni#completor')
-    \  }))
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tscompletejob#get_source_options({
-    \ 'name': 'tscompletejob',
-    \ 'whitelist': ['typescript'],
-    \ 'completor': function('asyncomplete#sources#tscompletejob#completor'),
-    \ }))
-    "----------------flow----------
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/asyncomplete-flow.vim',{'do':'npm install -g flow-bin'}
-    " au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#flow#get_source_options({
-    " \ 'name': 'flow',
-    " \ 'whitelist': ['javascript'],
-    " \ 'completor': function('asyncomplete#sources#flow#completor'),
-    " \ }))
-    "------------------------------
-    "补全方式换异步
-    let g:asyncomplete_auto_popup =1
-    func! s:check_back_space() abort
-      let col = col('.') -1
-      return !col || getline('.')[col-1]=~ '\s'
-    endfunc
-    set completeopt+=preview
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ?"\<C-n>":
-      \ <SID>check_back_space() ? "\<TAB>":
-      \ asyncomplete#force_refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+if g:completor=="asyncomplete"
+  "echom "开启asyncomplete"
+  "纯vimscript异步补全
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/asyncomplete-buffer.vim'
+  Plug 'prabirshrestha/asyncomplete-file.vim'
+  Plug 'yami-beta/asyncomplete-omni.vim'
+  Plug 'runoshun/tscompletejob'
+  Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
+  if executable('go-langserver')
+    au User lsp_setup call lsp#register_server({
+      \ 'name':'go-langserver',
+      \ 'cmd':{server_info->['go-langserver','-gocodecompletion']},
+      \ 'whitelist':['go'],
+      \ })
   endif
-else
-  "老版本补全
-  if g:completor=='autocomplpop'
-    Plug 'vim-scripts/AutoComplPop'
-    autocomplpop 设置
-    let g:AutoComplPop_IgnoreCaseOption=1
-    function! InsertTabWrapper()
-      let col=col('.')-1
-      if !col || getline('.')[col-1] !~ '\k'
-        return "\<TAB>"
-      else
-        return "\<C-x>\<C-o>"
-      endif
-    endfunction
-    "按tab键，全能提示，
-    "注意要用inoremap，不能用map！，如果用map！在命令模式下tab键没有提示功能。
-    inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
-    "shift+tab 展开代码片段
-    imap <S-TAB> <Plug>snipMateNextOrTrigger
+  if executable('pyls')
+    "sudo pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+      \ 'name':'pyls',
+      \ 'cmd':{server_info->['pyls']},
+      \ 'whitelist':['python'],
+      \ })
   endif
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+  \ 'name':'buffer',
+  \ 'whitelist':['*'],
+  \ 'blacklist':['go'],
+  \ 'completor':function('asyncomplete#sources#buffer#completor'),
+  \ }))
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+  \  'name':'file',
+  \  'whitelist':['*'],
+  \  'priority':10,
+  \  'completor':function('asyncomplete#sources#file#completor')
+  \  }))
+  "------------------------------
+  "补全方式换异步
+  let g:asyncomplete_auto_popup =1
+  func! s:check_back_space() abort
+    let col = col('.') -1
+    return !col || getline('.')[col-1]=~ '\s'
+  endfunc
+  set completeopt+=preview
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ?"\<C-n>":
+    \ <SID>check_back_space() ? "\<TAB>":
+    \ asyncomplete#force_refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 endif
+"老版本补全
+if g:completor=='autocomplpop'
+  Plug 'vim-scripts/AutoComplPop'
+  autocomplpop 设置
+  let g:AutoComplPop_IgnoreCaseOption=1
+  function! InsertTabWrapper()
+    let col=col('.')-1
+    if !col || getline('.')[col-1] !~ '\k'
+      return "\<TAB>"
+    else
+      return "\<C-x>\<C-o>"
+    endif
+  endfunction
+  "按tab键，全能提示，
+  "注意要用inoremap，不能用map！，如果用map！在命令模式下tab键没有提示功能。
+  inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
+  "shift+tab 展开代码片段
+  imap <S-TAB> <Plug>snipMateNextOrTrigger
+  "jsx插件
+  "Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
+  Plug 'mxw/vim-jsx'
+  "python-mode
+  Plug 'sherylynn/python-mode',{'branch':'develop'}
+  let g:pymode_python='python3'
+  "Plug 'posva/vim-vue',{'for':'vue'}
+  Plug 'posva/vim-vue'
+  "微软typerscript支持，高亮
+  "Plug 'leafgarland/typescript-vim',{'for':'ts'}
+  Plug 'leafgarland/typescript-vim'
+  Plug 'OmniSharp/omnisharp-vim',{'for':'cs'}
+  "ts的功能插件
+  "Plug 'Quramy/tsuquyomi',{'for':'ts'}
+  Plug 'Quramy/tsuquyomi'
+  "Go 插件
+  " 原先的gocode不再支持
+  " Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+  Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' ,'for':'go'}
+  Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
+  let g:go_highlight_types=1
+  let g:go_highlight_fields=1
+  let g:go_highlight_functions=1
+  let g:go_highlight_methods=1
+  let g:go_highlight_operators=1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_generate_tags = 1
+  let g:go_metailinter_autosave=1
 
+endif
+if g:completor=='coc'
+  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
+endif
+if g:completor=='LanguageClient-neovim'
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  let g:LanguageClient_rootMarkers = {
+        \ 'go':['.git','go.mod'],
+        \}
+  let g:LanguageClient_serverCommands = {
+      \ 'python': ['pyls'],
+      \ 'go':['go-langserver'],
+      \ }
+  "      bingo 在arm上既要proxy又不能安装
+"      \ 'go':['bingo'],
+endif
 call plug#end()

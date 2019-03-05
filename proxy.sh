@@ -42,4 +42,5 @@ go get -u golang.org/x/tools/cmd/guru
 go get -u github.com/josharian/impl
 go get -u github.com/dominikh/go-tools/cmd/keyify
 go get -u github.com/fatih/motion
-
+go get -u github.com/saibing/bingo
+go get -u github.com/sourcegraph/go-langserver

@@ -4,6 +4,8 @@ set nocompatible        " Must be first line
 "补全软件的选择k可以在这里设置
 "let g:completor='deoplete'
 let g:completor='asyncomplete'
+"let g:completor='coc'
+"let g:completor='LanguageClient-neovim'
 "let g:completor='autocomplpop'
 "let g:completor='completor'
 "加载路径

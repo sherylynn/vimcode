@@ -340,8 +340,11 @@ if !exists("*Edit_vimcode")
 func Edit_vimcode()
   :lcd $VIMHOME
   :tabedit $VIMHOME/config/01_base.vim
-  silent :vs $VIMHOME/config/02_plugins.vim
+  silent :sp $VIMHOME/config/02_plugins.vim
+  wincmd k
   silent :vs $VIMHOME/config/03_config.vim
+  wincmd j
+  silent :vs $VIMHOME/config/coc-settings.json
 endfunc
 endif
 if !exists("*Cd_source")
@@ -446,3 +449,8 @@ if g:completor=='asyncomplete'||g:completor=='autocomplpop'
 endif
 
 
+if g:completor=='coc'
+  "coc airline
+  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+endif
