@@ -229,22 +229,13 @@ if g:completor=="asyncomplete"
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
   Plug 'prabirshrestha/asyncomplete-file.vim'
-  Plug 'yami-beta/asyncomplete-omni.vim'
-  Plug 'runoshun/tscompletejob'
-  Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
+  Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm i -g typerscript typerscript-language-server','for':'javascript' }
+  Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm i -g typerscript typerscript-language-server','for':'typerscript' }
   if executable('go-langserver')
     au User lsp_setup call lsp#register_server({
       \ 'name':'go-langserver',
       \ 'cmd':{server_info->['go-langserver','-gocodecompletion']},
       \ 'whitelist':['go'],
-      \ })
-  endif
-  if executable('pyls')
-    "sudo pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-      \ 'name':'pyls',
-      \ 'cmd':{server_info->['pyls']},
-      \ 'whitelist':['python'],
       \ })
   endif
   au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
