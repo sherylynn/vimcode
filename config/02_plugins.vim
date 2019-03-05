@@ -225,10 +225,10 @@ if g:completor=="asyncomplete"
   "纯vimscript异步补全
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
   Plug 'prabirshrestha/asyncomplete-file.vim'
+  Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
   Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm install -g typescript typescript-language-server','for':'javascript' }
   Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm install -g typescript typescript-language-server','for':'typescript' }
   if executable('go-langserver')

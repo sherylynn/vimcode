@@ -8,6 +8,8 @@ let g:completor='asyncomplete'
 "let g:completor='LanguageClient-neovim'
 "let g:completor='autocomplpop'
 "let g:completor='completor'
+"let g:lsp='true'
+let g:lsp='false'
 "加载路径
 let $VIMHOME=expand("$HOME/vimcode")
 let $BUNDLE =expand("$VIMHOME/plugged")
