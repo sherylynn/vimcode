@@ -229,8 +229,8 @@ if g:completor=="asyncomplete"
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
   Plug 'prabirshrestha/asyncomplete-file.vim'
-  Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm i -g typerscript typerscript-language-server','for':'javascript' }
-  Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm i -g typerscript typerscript-language-server','for':'typerscript' }
+  Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm install -g typescript typescript-language-server','for':'javascript' }
+  Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm install -g typescript typescript-language-server','for':'typescript' }
   if executable('go-langserver')
     au User lsp_setup call lsp#register_server({
       \ 'name':'go-langserver',
@@ -315,6 +315,7 @@ if g:completor=='autocomplpop'
 endif
 if g:completor=='coc'
   Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
+"  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
 endif
 if g:completor=='LanguageClient-neovim'
   Plug 'autozimu/LanguageClient-neovim', {
