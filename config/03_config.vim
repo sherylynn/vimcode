@@ -388,7 +388,7 @@ else
     autocmd!
     autocmd FileType go nmap <leader>t :AsyncRun go test<CR>
     autocmd FileType go nmap <leader>b :AsyncRun go build<CR>
-    autocmd FileType go nmap <leader>r :AsyncRun go run<CR>
+    autocmd FileType go nmap <leader>r :AsyncRun go run %<CR>
   augroup END
   augroup pycmd 
     autocmd!
@@ -418,21 +418,22 @@ augroup NodeJS
   autocmd VimEnter,BufNewFile,BufRead * nested call NodeJSable(expand('%:h'),"package.json")
 augroup END
 
-
-"显示
-"tabline
-"let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-"自动完成
-let g:ale_completion_enabled = 1
-let g:ale_linters = { 'cs': ['OmniSharp'] }
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-"自动纠正
-let g:ale_fix_on_save = 1
-"保持打开栏目
-let g:ale_sign_column_always = 1
+if g:completor=='autocomplpop'
+  "显示
+  "tabline
+  "let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#ale#enabled = 1
+  "自动完成
+  let g:ale_completion_enabled = 1
+  let g:ale_linters = { 'cs': ['OmniSharp'] }
+  let g:ale_fixers = {
+  \   'javascript': ['eslint'],
+  \}
+  "自动纠正
+  let g:ale_fix_on_save = 1
+  "保持打开栏目
+  let g:ale_sign_column_always = 1
+endif
 "--------------------------------------------------
 "incsearch
 "--------------------------------------------------
@@ -466,4 +467,25 @@ if g:completor=='coc'
   "coc airline
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+endif
+if g:completor=='asyncomplete'
+  let g:lsp_signs_enabled = 1         " enable signs
+  let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+  let g:lsp_signs_error = {'text': '✗'}
+endif
+let g:AutoUpdate=1
+if g:AutoUpdate==1 
+"  if !exists("*GitPullable")
+"    silent :PlugInstall<CR>
+"  else
+    augroup LynnPlugUpdate
+      autocmd!
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-nodejs'))
+      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
+      autocmd VimEnter * nested call GitPullable(expand('.'))
+    augroup end
+"  endif
 endif

@@ -49,22 +49,6 @@ augroup END
 Plug 'sherylynn/vim-nodejs'
 " auto update 
 Plug 'sherylynn/vim-update'
-let g:AutoUpdate=1
-if g:AutoUpdate==1 
-"  if !exists("*GitPullable")
-"    silent :PlugInstall<CR>
-"  else
-    augroup LynnPlugUpdate
-      autocmd!
-      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode'))
-      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vimer-rpg'))
-      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-elisp'))
-      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-nodejs'))
-      autocmd VimEnter * nested call GitPullable(expand('$HOME/vimcode/plugged/vim-update'))
-      autocmd VimEnter * nested call GitPullable(expand('.'))
-    augroup end
-"  endif
-endif
 "浏览树
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "浏览树显示git状态插件
@@ -130,8 +114,6 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 
 
-"切换到 ale
-Plug 'w0rp/ale'
 " {}
 Plug 'jiangmiao/auto-pairs'
 "</>
@@ -226,7 +208,7 @@ if g:completor=="asyncomplete"
   if executable('go-langserver')
     au User lsp_setup call lsp#register_server({
       \ 'name':'go-langserver',
-      \ 'cmd':{server_info->['go-langserver','-gocodecompletion']},
+      \ 'cmd':{server_info->['go-langserver','-gocodecompletion','-diagnostics','-lint-tool golint']},
       \ 'whitelist':['go'],
       \ })
   else
@@ -262,6 +244,8 @@ endif
 if g:completor=='autocomplpop'
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'vim-scripts/AutoComplPop'
+  "切换到 ale
+  Plug 'w0rp/ale'
   autocomplpop 设置
   let g:AutoComplPop_IgnoreCaseOption=1
   function! InsertTabWrapper()
