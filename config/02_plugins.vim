@@ -205,10 +205,20 @@ if g:completor=="asyncomplete"
   Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
   Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm install -g typescript typescript-language-server','for':'javascript' }
   Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm install -g typescript typescript-language-server','for':'typescript' }
-  if executable('go-langserver')
+  if executable('bingo')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'bingo',
+        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+  elseif executable('go-langserver')
+  "go-langserver is bug in diagnostics and linter
+    "切换到 ale
+    Plug 'w0rp/ale'
+
     au User lsp_setup call lsp#register_server({
       \ 'name':'go-langserver',
-      \ 'cmd':{server_info->['go-langserver','-gocodecompletion','-diagnostics','-lint-tool golint']},
+      \ 'cmd':{server_info->['go-langserver','-gocodecompletion','-diagnostics','-lint-tool','"golint"']},
       \ 'whitelist':['go'],
       \ })
   else
@@ -244,8 +254,6 @@ endif
 if g:completor=='autocomplpop'
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'vim-scripts/AutoComplPop'
-  "切换到 ale
-  Plug 'w0rp/ale'
   autocomplpop 设置
   let g:AutoComplPop_IgnoreCaseOption=1
   function! InsertTabWrapper()
