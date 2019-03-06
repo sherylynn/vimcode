@@ -77,13 +77,6 @@ Plug 'vim-scripts/Tagbar'
 "Plug 'ap/vim-css-color',{'for':['html','javascript']}
 Plug 'ap/vim-css-color'
 "zencoding 改名为了 Emmet
-"Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','javascript']}
-Plug 'https://github.com/luofei614/Emmet.vim'
-"Plug 'vim-scripts/WebAPI.vim',{'for':['html','javascript']}
-Plug 'vim-scripts/WebAPI.vim'
-" jquery , angularjs 等语法
-"Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
-Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 
 "css私有前缀
 Plug 'vim-scripts/prefixer.vim'
@@ -124,11 +117,6 @@ Plug 'rafi/awesome-vim-colorschemes'
 "Plug 'pangloss/vim-javascript',{'for':['html','javascript']}
 Plug 'pangloss/vim-javascript'
 
-if g:completor=='asyncomplete'||g:completor=='autocomplpop'
-  "tern js 补全
-"  Plug 'ternjs/tern_for_vim', {'do': 'npm install','for':'javascript'}
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-endif
 
 "Plug 'terryma/vim-multiple-cursors'
 
@@ -179,6 +167,10 @@ Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
 Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 "中文排版规范化用法  :PanGu
 Plug 'hotoo/pangu.vim'
+"语言插件
+"微软typerscript支持，高亮
+"Plug 'leafgarland/typescript-vim',{'for':'ts'}
+Plug 'leafgarland/typescript-vim'
 "异步补全，需要python3
 if has('python3')
   if g:completor=="deoplete"
@@ -268,6 +260,7 @@ if g:completor=="asyncomplete"
 endif
 "老版本补全
 if g:completor=='autocomplpop'
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'vim-scripts/AutoComplPop'
   autocomplpop 设置
   let g:AutoComplPop_IgnoreCaseOption=1
@@ -284,6 +277,13 @@ if g:completor=='autocomplpop'
   inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
   "shift+tab 展开代码片段
   imap <S-TAB> <Plug>snipMateNextOrTrigger
+  "Plug 'https://github.com/luofei614/Emmet.vim',{'for':['html','javascript']}
+  Plug 'https://github.com/luofei614/Emmet.vim'
+  "Plug 'vim-scripts/WebAPI.vim',{'for':['html','javascript']}
+  Plug 'vim-scripts/WebAPI.vim'
+  " jquery , angularjs 等语法
+  "Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+  Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
   "jsx插件
   "Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
   Plug 'mxw/vim-jsx'
@@ -292,9 +292,6 @@ if g:completor=='autocomplpop'
   let g:pymode_python='python3'
   "Plug 'posva/vim-vue',{'for':'vue'}
   Plug 'posva/vim-vue'
-  "微软typerscript支持，高亮
-  "Plug 'leafgarland/typescript-vim',{'for':'ts'}
-  Plug 'leafgarland/typescript-vim'
   Plug 'OmniSharp/omnisharp-vim',{'for':'cs'}
   "ts的功能插件
   "Plug 'Quramy/tsuquyomi',{'for':'ts'}

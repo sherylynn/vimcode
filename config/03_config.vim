@@ -357,11 +357,6 @@ endif
 map <leader>5 :call Edit_vimcode()<CR>
 "leader+7 预览markdown 需要python和插件支持
 nnoremap <leader>7 :MarkdownPreview<cr>
-augroup pycmd 
-  autocmd!
-  autocmd FileType py let g:pymode_run =1
-  autocmd FileType py let g:pymode_run_bind = '<leader>r'
-augroup END
 augroup batcmd
   autocmd!
   autocmd FileType bat nnoremap <leader>r :!cmd.exe %
@@ -375,13 +370,31 @@ augroup bashcmd
   autocmd!
   autocmd FileType sh nmap <leader>r :AsyncRun bash %<CR>
 augroup END
-augroup gocmd
-  autocmd!
-  autocmd FileType go nmap <leader>t <Plug>(go-test)
-  autocmd FileType go nmap <leader>b <Plug>(go-build)
-  autocmd FileType go nmap <leader>r <Plug>(go-run)
-  autocmd FileType go let g:go_highlight_types =1
-augroup END
+if g:completor=='autocomplpop'
+  augroup gocmd
+    autocmd!
+    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <leader>b <Plug>(go-build)
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    autocmd FileType go let g:go_highlight_types =1
+  augroup END
+  augroup pycmd 
+    autocmd!
+    autocmd FileType py let g:pymode_run =1
+    autocmd FileType py let g:pymode_run_bind = '<leader>r'
+  augroup END
+else
+  augroup gocmd
+    autocmd!
+    autocmd FileType go nmap <leader>t :AsyncRun go test<CR>
+    autocmd FileType go nmap <leader>b :AsyncRun go build<CR>
+    autocmd FileType go nmap <leader>r :AsyncRun go run<CR>
+  augroup END
+  augroup pycmd 
+    autocmd!
+    autocmd FileType py nmap <leader>r :AsyncRun python %<CR>
+  augroup END
+endif
 augroup NodeJS
   autocmd!
   if !exists("*NodeJSable")
