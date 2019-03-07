@@ -154,44 +154,42 @@ Plug 'hotoo/pangu.vim'
 "Plug 'leafgarland/typescript-vim',{'for':'ts'}
 Plug 'leafgarland/typescript-vim'
 "异步补全，需要python3
-if has('python3')
-  if g:completor=="deoplete"
-    if has('nvim')
-      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-      Plug 'Shougo/deoplete.nvim'
-      Plug 'roxma/nvim-yarp'
-      Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
-    endif
-  "  "注释部分为flow补全---------------------
-  "  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
-  "  "Plug 'Shougo/neosnippet'
-  "  "Plug 'Shougo/neosnippet-snippets'
-  "  "---------------------------------------
-  "  "--------ternjs-----------------
-"    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' ,'for':'javascript'}
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-    let g:deoplete#sources#ternjs#types = 1
-
-    let g:deoplete#sources#ternjs#depths = 1
-    let g:deoplete#sources#ternjs#docs = 1
-    let g:deoplete#sources#ternjs#filter = 0
-    "下面三个设定是为了配合tern_for_vims使用的，但是一直有问题
-    let g:tern#command =["tern"]
-    "let g:tern#arguments =["--persistent"]
-    "用了这个参数还是不行啊，还是会产生.tern_port
-    "下一步尝试把autocmd 设置进入的时候直接删掉目录中的.tern_port
-    "那么还是可以用的，得了解vim如何探测目录
-    let g:tern#arguments =["--no-port-file"]
-    "-------------------------------------------
-    Plug 'mhartington/nvim-typescript'
-    "-------------------------------------------
-    "go
-    Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
-    let g:deoplete#enable_at_startup = 1
-  elseif g:completor=="completor"
-    Plug 'maralla/completor.vim',{'do':'pip3 install jedi'}
+if g:completor=="deoplete"
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc',{'do':'pip3 install neovim'}
   endif
+"  "注释部分为flow补全---------------------
+"  "Plug 'wokalski/autocomplete-flow',{'do':'npm i -g flow-bin'}
+"  "Plug 'Shougo/neosnippet'
+"  "Plug 'Shougo/neosnippet-snippets'
+"  "---------------------------------------
+"  "--------ternjs-----------------
+"    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' ,'for':'javascript'}
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  let g:deoplete#sources#ternjs#types = 1
+
+  let g:deoplete#sources#ternjs#depths = 1
+  let g:deoplete#sources#ternjs#docs = 1
+  let g:deoplete#sources#ternjs#filter = 0
+  "下面三个设定是为了配合tern_for_vims使用的，但是一直有问题
+  let g:tern#command =["tern"]
+  "let g:tern#arguments =["--persistent"]
+  "用了这个参数还是不行啊，还是会产生.tern_port
+  "下一步尝试把autocmd 设置进入的时候直接删掉目录中的.tern_port
+  "那么还是可以用的，得了解vim如何探测目录
+  let g:tern#arguments =["--no-port-file"]
+  "-------------------------------------------
+  Plug 'mhartington/nvim-typescript'
+  "-------------------------------------------
+  "go
+  Plug 'zchee/deoplete-go', { 'do': 'make','for':'go'}
+  let g:deoplete#enable_at_startup = 1
+elseif g:completor=="completor"
+  Plug 'maralla/completor.vim',{'do':'pip3 install jedi'}
 endif
 "----------------------------补全器的依赖分开来弄
 if g:completor=="asyncomplete"

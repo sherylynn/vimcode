@@ -2,11 +2,15 @@
 set nocompatible        " Must be first line
 " }
 "补全软件的选择k可以在这里设置
+if has('nvim')
+  let g:completor='coc'
+elseif has('job')
+  let g:completor='asyncomplete'
+else
+  let g:completor='autocomplpop'
+endif
 "let g:completor='deoplete'
-let g:completor='asyncomplete'
-"let g:completor='coc'
 "let g:completor='LanguageClient-neovim'
-"let g:completor='autocomplpop'
 "let g:completor='completor'
 "let g:lsp='true'
 let g:lsp='false'
