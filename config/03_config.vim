@@ -464,6 +464,12 @@ endif
 
 
 if g:completor=='coc'
+  if executable('go')
+    if executable('bingo')
+    else
+      :! go get -u github.com/saibing/bingo
+    endif
+  endif
   "coc airline
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'

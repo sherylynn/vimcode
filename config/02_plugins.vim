@@ -320,6 +320,7 @@ if g:completor=='LanguageClient-neovim'
       \ 'go':['go-langserver'],
       \ }
   "      bingo 在arm上既要proxy又不能安装
+  "      其实只是因为依赖go1.11以上version
 "      \ 'go':['bingo'],
 endif
 call plug#end()
