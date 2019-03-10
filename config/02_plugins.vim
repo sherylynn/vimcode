@@ -203,7 +203,7 @@ if g:completor=="asyncomplete"
   Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
   Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm install -g typescript typescript-language-server','for':'javascript' }
   Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm install -g typescript typescript-language-server','for':'typescript' }
-  if executable('bingo')
+  if g:vim_lsp_go=='bingo' && executable('bingo')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'bingo',
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},

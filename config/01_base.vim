@@ -13,7 +13,8 @@ endif
 "let g:completor='LanguageClient-neovim'
 "let g:completor='completor'
 "let g:lsp='true'
-let g:lsp='false'
+"bingo 似乎一定要项目在gopath下
+let g:vim_lsp_go='go-langserver'
 "加载路径
 let $VIMHOME=expand("$HOME/vimcode")
 let $BUNDLE =expand("$VIMHOME/plugged")
