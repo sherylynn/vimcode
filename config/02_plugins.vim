@@ -88,7 +88,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'dunstontc/vim-code-dark'
 "Plug 'DNonov/vim-code-dark'
 Plug 'sherylynn/vim-code-dark'
-Plug 'rafi/awesome-vim-colorschemes'
+"Plug 'rafi/awesome-vim-colorschemes'
 
 "Plug 'dunstontc/vim-vscode-theme'
 "colorscheme dark_plus
@@ -110,8 +110,6 @@ Plug 'pangloss/vim-javascript'
 "Plug 'garbas/vim-snipmate'
 "Plug 'https://github.com/bonsaiben/bootstrap-snippets.git'
 
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'https://github.com/vim-airline/vim-airline-themes'
 
 
 " {}
@@ -195,6 +193,8 @@ endif
 if g:completor=="asyncomplete"
   "echom "开启asyncomplete"
   "纯vimscript异步补全
+  Plug 'https://github.com/vim-airline/vim-airline'
+  Plug 'https://github.com/vim-airline/vim-airline-themes'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -303,6 +303,10 @@ if g:completor=='autocomplpop'
 
 endif
 if g:completor=='coc'
+  Plug 'https://github.com/vim-airline/vim-airline'
+  Plug 'https://github.com/vim-airline/vim-airline-themes'
+"  Plug 'liuchengxu/eleline.vim'
+"  Plug 'itchyny/lightline.vim'
   Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
 endif

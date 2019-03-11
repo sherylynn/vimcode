@@ -471,8 +471,19 @@ if g:completor=='coc'
     endif
   endif
   "coc airline
+"  let g:airline_extension=['branch','hunks','coc']
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+  let g:lightline={
+        \'colorscheme':'wombat',
+        \'active':{
+        \  'left':[['mode','paste'],
+        \    ['cocstatus','readonly','filename','modified']]
+        \},
+        \'component_function':{
+        \  'cocstatus':'coc#status'
+        \}
+        \}
 endif
 if g:completor=='asyncomplete'
   let g:lsp_signs_enabled = 1         " enable signs

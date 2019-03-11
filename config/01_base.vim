@@ -21,15 +21,15 @@ let $BUNDLE =expand("$VIMHOME/plugged")
 let $PLUG_DIR=expand("$VIMHOME/autoload")
 let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")
 if empty(glob($PLUG_VIM))
-if has('win32')||has('win64')
-  cd $VIMHOME
-  let $PLUG_VIM="autoload/plug.vim"
-else
-  "如果是其他系统不需要调整路径
-endif
-  silent !curl -fLo $PLUG_VIM --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+  if has('win32')||has('win64')
+    cd $VIMHOME
+    let $PLUG_VIM="autoload/plug.vim"
+  else
+    "如果是其他系统不需要调整路径
+  endif
+    silent !curl -fLo $PLUG_VIM --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
 source $PLUG_VIM
 " Windows Compatible {
