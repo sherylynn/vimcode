@@ -23,7 +23,7 @@ let g:mapleader = ' '
 "-------------------------------------
 " Plugin options
 "为了启动时间-------------------------------
-"Plug 'tweekmonster/startuptime.vim'
+Plug 'tweekmonster/startuptime.vim'
 "Plug 'junegunn/vim-easy-align'
 "快速对齐
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -38,9 +38,8 @@ let g:mapleader = ' '
 "Plug 'thinca/vim-painter'
 "-------------------------------------------
 " emacs
-"Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
+Plug 'sherylynn/vim-elisp' , {'for':['org','elisp']}
 set shortmess=at
-Plug 'sherylynn/vim-elisp' 
 augroup orgmode
   autocmd!
   autocmd BufNewFile,BufRead *.org set filetype=org
@@ -84,10 +83,10 @@ Plug 'junegunn/fzf.vim'
 "Plug 'lifepillar/vim-solarized8'
 "vscode dark
 "原作者的不能使用了 发现换一个人也不行 原来是colorschemey应该放外面
-"Plug 'tomasiser/vim-code-dark'
+Plug 'tomasiser/vim-code-dark'
 "Plug 'dunstontc/vim-code-dark'
 "Plug 'DNonov/vim-code-dark'
-Plug 'sherylynn/vim-code-dark'
+"Plug 'sherylynn/vim-code-dark'
 "Plug 'rafi/awesome-vim-colorschemes'
 
 "Plug 'dunstontc/vim-vscode-theme'
@@ -209,7 +208,8 @@ if g:completor=="asyncomplete"
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
-  elseif executable('go-langserver')
+  elseif g:vim_lsp_go=='go-langserver' && executable('go-langserver')
+    Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
   "go-langserver is bug in diagnostics and linter
     "切换到 ale
     Plug 'w0rp/ale'
@@ -278,6 +278,10 @@ if g:completor=='autocomplpop'
   "Plug 'mxw/vim-jsx',{'for':['javascript','jsx']}
   Plug 'mxw/vim-jsx'
   "python-mode
+  "Go 插件
+  " 原先的gocode不再支持
+  " Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
+"    Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' ,'for':'go'}
   Plug 'sherylynn/python-mode',{'branch':'develop'}
   let g:pymode_python='python3'
   "Plug 'posva/vim-vue',{'for':'vue'}
@@ -286,20 +290,6 @@ if g:completor=='autocomplpop'
   "ts的功能插件
   "Plug 'Quramy/tsuquyomi',{'for':'ts'}
   Plug 'Quramy/tsuquyomi'
-  "Go 插件
-  " 原先的gocode不再支持
-  " Plug 'nsf/gocode', { 'rtp': 'vim','for':'go' }
-  Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' ,'for':'go'}
-  Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
-  let g:go_highlight_types=1
-  let g:go_highlight_fields=1
-  let g:go_highlight_functions=1
-  let g:go_highlight_methods=1
-  let g:go_highlight_operators=1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_highlight_generate_tags = 1
-  let g:go_metailinter_autosave=1
 
 endif
 if g:completor=='coc'
@@ -307,8 +297,8 @@ if g:completor=='coc'
   Plug 'https://github.com/vim-airline/vim-airline-themes'
 "  Plug 'liuchengxu/eleline.vim'
 "  Plug 'itchyny/lightline.vim'
-  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
-"  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
+"  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
+  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
 endif
 if g:completor=='LanguageClient-neovim'
   Plug 'autozimu/LanguageClient-neovim', {

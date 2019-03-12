@@ -371,13 +371,6 @@ augroup bashcmd
   autocmd FileType sh nmap <leader>r :AsyncRun bash %<CR>
 augroup END
 if g:completor=='autocomplpop'
-  augroup gocmd
-    autocmd!
-    autocmd FileType go nmap <leader>t <Plug>(go-test)
-    autocmd FileType go nmap <leader>b <Plug>(go-build)
-    autocmd FileType go nmap <leader>r <Plug>(go-run)
-    autocmd FileType go let g:go_highlight_types =1
-  augroup END
   augroup pycmd 
     autocmd!
     autocmd FileType py let g:pymode_run =1
@@ -505,4 +498,25 @@ if g:AutoUpdate==1
       autocmd VimEnter * nested call GitPullable(expand('.'))
     augroup end
 "  endif
+endif
+if has('nvim')
+else
+  let g:go_highlight_types=1
+  let g:go_highlight_fields=1
+  let g:go_highlight_functions=1
+  let g:go_highlight_methods=1
+  let g:go_highlight_operators=1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_generate_tags = 1
+  let g:go_metailinter_autosave=1
+
+  augroup gocmd
+    autocmd!
+    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <leader>b <Plug>(go-build)
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    autocmd FileType go let g:go_highlight_types =1
+  augroup END
+
 endif

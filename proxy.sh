@@ -45,3 +45,5 @@ go get -u github.com/fatih/motion
 go get -u github.com/saibing/bingo
 go get -u github.com/sourcegraph/go-langserver
 go get -u golang.org/x/lint/golint
+go get -u golang.org/x/tools/cmd/gopls 
+go get -u github.com/go-delve/delve/cmd/dlv
