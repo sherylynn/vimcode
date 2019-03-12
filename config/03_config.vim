@@ -344,7 +344,7 @@ func Edit_vimcode()
   wincmd k
   silent :vs $VIMHOME/config/03_config.vim
   wincmd j
-  silent :vs $VIMHOME/config/coc-settings.json
+  silent :vs $VIMHOME/nvim/coc-settings.json
 endfunc
 endif
 if !exists("*Cd_source")
