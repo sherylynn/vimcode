@@ -1,6 +1,8 @@
 autoload/
 plugged/
 node_modules/
+configstore
 *.swp
 tags
 init.vim
+.netrwhist
