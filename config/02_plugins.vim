@@ -202,6 +202,15 @@ if g:completor=="asyncomplete"
   Plug 'prabirshrestha/vim-lsp',{'do':'sudo pip3 install python-language-server pycodestyle'}
   Plug 'ryanolsonx/vim-lsp-javascript',{ 'do':'npm install -g typescript typescript-language-server','for':'javascript' }
   Plug 'ryanolsonx/vim-lsp-typescript',{ 'do':'npm install -g typescript typescript-language-server','for':'typescript' }
+  if executable('ccls')
+     au User lsp_setup call lsp#register_server({
+        \ 'name': 'ccls',
+        \ 'cmd': {server_info->['ccls']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': {},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+  endif
   if g:vim_lsp_go=='bingo' && executable('bingo')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'bingo',
