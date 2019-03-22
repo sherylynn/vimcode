@@ -1,15 +1,15 @@
 {
   "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         }
-       }
-    },
+    //"ccls": {
+      //"command": "ccls",
+      //"filetypes": ["c", "cpp", "objc", "objcpp"],
+      //"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      //"initializationOptions": {
+         //"cache": {
+           //"directory": "/tmp/ccls"
+         //}
+       //}
+    //},
     "golang": {
       "command": "bingo",
       "args": ["--diagnostics-style=instant"],

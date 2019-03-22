@@ -457,6 +457,7 @@ endif
 
 
 if g:completor=='coc'
+  	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java')
   if executable('go')
     if executable('bingo')
     else
