@@ -49,9 +49,13 @@ Plug 'sherylynn/vim-nodejs'
 " auto update 
 Plug 'sherylynn/vim-update'
 "浏览树
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+if g:filemanager=='nerdtree'
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+elseif g:filemanager=='defx'
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 "浏览树显示git状态插件
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-scripts/Tagbar'
 "Bundle 'minibufexpl.vim'
 "------------------------------web-----------------------

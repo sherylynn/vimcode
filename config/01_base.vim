@@ -9,6 +9,15 @@ elseif has('job')
 else
   let g:completor='autocomplpop'
 endif
+if has('nvim')
+  if has('python3')
+  else
+    !pip3 install neovim --user
+  endif
+  let g:filemanager='defx'
+else
+  let g:filemanager='nerdtree'
+endif
 "let g:completor='deoplete'
 "let g:completor='LanguageClient-neovim'
 "let g:completor='completor'

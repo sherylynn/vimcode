@@ -79,8 +79,15 @@ nnoremap <silent> <Leader>g :Ag<CR>
 "leader search help
 nnoremap <silent> <Leader>sh yiw:h <C-R>"<CR>
 "mobile leader>t 已经被test占用,windows qwe 代表左中右
-nnoremap <silent> <Leader>wq :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
+if g:filemanager=='nerdtree'
+  nnoremap <silent> <Leader>wq :NERDTreeToggle<CR>
+  nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
+  nnoremap <Leader>1 :NERDTreeToggle<CR>
+elseif g:filemanager=='defx'
+  nnoremap <silent> <Leader>wq :Defx<CR>
+  nnoremap <silent> <Leader>ft :Defx<CR>
+  nnoremap <Leader>1 :Defx<CR>
+endif
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
 "terminal
@@ -188,7 +195,6 @@ augroup END
 
 "leader+0~9 快捷键设置
 "在tree中t就可以新建一个tab来编辑
-nmap <Leader>1 :NERDTreeToggle<CR>
 "vim中的map中的!代表了插入模式和命令模式
 "而在后两者的模式的输入中对空格本身的判断延时会影响使用
 "所以去掉
