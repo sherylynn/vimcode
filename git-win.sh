@@ -12,7 +12,7 @@ echo set ff=unix >> ../.vimrc
 rm -rf ../.config/nvim
 mkdir -p ../.config/nvim
 cp ../.vimrc ../.config/nvim/init.vim
-cp config/coc-settings.json ../.config/nvim/
+#cp config/coc-settings.json ../.config/nvim/
 
 #   for neovim in windows
 #   或许还是要考虑环境变量$XDG_CONFIG_HOME
