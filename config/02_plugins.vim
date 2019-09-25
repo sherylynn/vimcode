@@ -215,7 +215,11 @@ if g:completor=="asyncomplete"
         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
         \ })
   endif
-  if g:vim_lsp_go=='bingo' && executable('bingo')
+  if g:vim_lsp_go=='gopls' && executable('gopls')
+    Plug 'fatih/vim-go' , { 'do': ':GoInstallBinaries','for':'go' }
+    let g:go_def_mode='gopls'
+    let g:go_info_mode='gopls'
+  elseif g:vim_lsp_go=='bingo' && executable('bingo')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'bingo',
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
@@ -311,7 +315,8 @@ if g:completor=='coc'
 "  Plug 'liuchengxu/eleline.vim'
 "  Plug 'itchyny/lightline.vim'
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
-  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
+"  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
+  Plug 'neoclide/coc.nvim',{'branch':'release'}
 endif
 if g:completor=='LanguageClient-neovim'
   Plug 'autozimu/LanguageClient-neovim', {

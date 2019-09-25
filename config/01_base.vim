@@ -23,7 +23,8 @@ endif
 "let g:completor='completor'
 "let g:lsp='true'
 "bingo 似乎一定要项目在gopath下
-let g:vim_lsp_go='go-langserver'
+"let g:vim_lsp_go='go-langserver'
+let g:vim_lsp_go='gopls'
 "加载路径
 let $VIMHOME=expand("$HOME/vimcode")
 let $BUNDLE =expand("$VIMHOME/plugged")

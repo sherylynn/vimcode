@@ -465,9 +465,12 @@ endif
 if g:completor=='coc'
   	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java')
   if executable('go')
-    if executable('bingo')
+    if executable('gopls')
     else
-      :! go get -u github.com/saibing/bingo
+      :! go get  golang.org/x/tools/gopls@latest
+    "if executable('bingo')
+    "else
+    "  :! go get -u github.com/saibing/bingo
     endif
   endif
   "coc airline
