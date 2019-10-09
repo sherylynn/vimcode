@@ -464,6 +464,7 @@ endif
 
 if g:completor=='coc'
   	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java')
+  autocmd FileType json syntax match Comment +\/\/.\+$+
   if executable('go')
     if executable('gopls')
     else
