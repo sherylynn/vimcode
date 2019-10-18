@@ -12,7 +12,7 @@ endif
 if has('nvim')
   if has('python3')
   else
-    !pip3 install neovim --user
+    !pip3 install pynvim --user
   endif
   let g:filemanager='defx'
 else
