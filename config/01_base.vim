@@ -63,7 +63,7 @@ if has('win32') || has('win64')
     " Newer Windows files might contain utf-8 or utf-16 LE so we might
     " want to try them first.
     set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15,chines
-    set guifont=Consolas:h12
+"    set guifont=Consolas:h12
     "解决菜单乱码
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim

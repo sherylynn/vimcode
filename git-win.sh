@@ -20,6 +20,9 @@ rm -rf ../AppData/Local/nvim
 mkdir -p ../AppData/Local/nvim
 cp ../.vimrc ../AppData/Local/nvim/init.vim
 cp config/coc-settings.json ../AppData/Local/nvim/
+if [[ "$(uname)" == *MINGW* ]]; then
+  echo set guifont=* >> ../AppData/Local/nvim/init.vim
+fi
 
 #call cat config/_vimrc > ../.vimrc
 #其他设定如果设计后面的，得在source加载前加载
