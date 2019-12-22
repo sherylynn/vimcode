@@ -468,7 +468,7 @@ if g:completor=='coc'
   if executable('go')
     if executable('gopls')
     else
-      :! go get  golang.org/x/tools/gopls@latest
+      :! go get  golang.org/x/tools/gopls
     "if executable('bingo')
     "else
     "  :! go get -u github.com/saibing/bingo
