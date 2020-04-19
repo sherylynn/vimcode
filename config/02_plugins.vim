@@ -134,7 +134,7 @@ Plug 'skywind3000/asyncrun.vim'
 "Plug 'skywind3000/vimmake'
 "-------------------------特殊项目---------------
 "Plug 'hsanson/vim-android'
-"Plug 'chemzqm/wxapp.vim'
+Plug 'chemzqm/wxapp.vim'
 "-----------------------------------------------j
 "彩虹括号
 Plug 'luochen1990/rainbow'
