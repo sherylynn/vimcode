@@ -100,8 +100,9 @@ endif
 "editor
 nnoremap <silent> <Leader>fed :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>feR :call Reload_vimcode()<cr>
-nnoremap <silent> <Leader>ee :call Edit_vimcode()<cr>
-nnoremap <silent> <Leader>er :call Cd_source()<cr>
+nnoremap <silent> <Leader>ze :call Edit_vimcode()<cr>
+nnoremap <silent> <Leader>zga :call Edit_vimcode()<cr>
+nnoremap <silent> <Leader>zr :call Reload_vimcode()<cr>
 "edit load editfile
 nnoremap <silent> <Leader>el :source %<cr>
 "add comment to vimrc
@@ -153,10 +154,11 @@ nmap <Leader>h <C-W><C-H>
 nmap <Leader>j <C-W><C-J>
 nmap <Leader>k <C-W><C-K>
 nmap <Leader>l <C-W><C-L>
-nmap <Leader>wh <C-W><C-H>
-nmap <Leader>wj <C-W><C-J>
-nmap <Leader>wk <C-W><C-K>
-nmap <Leader>wl <C-W><C-L>
+"split window
+nmap <Leader>sh <C-W>v
+nmap <Leader>sj <C-W>s
+nmap <Leader>sk <C-W>s
+nmap <Leader>sl <C-W>v
 "tab窗口的切换移动
 nmap <silent><tab>h :tabp<cr>
 nmap <silent><tab>j :tabclose<cr>
