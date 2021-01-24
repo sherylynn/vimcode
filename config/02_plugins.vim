@@ -139,8 +139,8 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'terryma/vim-expand-region'
 "异步执行命令
 Plug 'skywind3000/asyncrun.vim'
-"终端命令
-Plug 'skywind3000/vim-terminal-help'
+"终端命令 会打断输入
+"Plug 'skywind3000/vim-terminal-help'
 "编译任务插件
 "Plug 'skywind3000/vimmake'
 "-------------------------特殊项目---------------
