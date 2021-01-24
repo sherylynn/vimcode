@@ -101,6 +101,7 @@ endif
 nnoremap <silent> <Leader>fed :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>feR :call Reload_vimcode()<cr>
 nnoremap <silent> <Leader>ze :call Edit_vimcode()<cr>
+nnoremap <silent> <Leader>ee :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>zga :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>zr :call Reload_vimcode()<cr>
 "edit load editfile

@@ -53,7 +53,13 @@ if g:filemanager=='nerdtree'
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'Xuyuanp/nerdtree-git-plugin'
 elseif g:filemanager=='defx'
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  if has('nvim')
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/defx.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
 endif
 "浏览树显示git状态插件
 Plug 'vim-scripts/Tagbar'
