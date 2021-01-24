@@ -17,9 +17,14 @@ let g:tagbar_width=20
 "颜色主题设置
 set background=dark
 "colorscheme solarized8
-colorscheme codedark
-let g:airline_theme='codedark'
-let g:tcc="codedark"
+if g:vimcode_theme=="codedark"
+  colorscheme codedark
+  let g:airline_theme='codedark'
+  let g:tcc="codedark"
+else
+  colorscheme onedark
+  let g:airline_theme='onedark'
+endif
 " Allow to trigger colorscheme
   function! ToggleCC() 
     " Inversion 
@@ -30,7 +35,7 @@ let g:tcc="codedark"
       echom g:tcc
     elseif g:tcc== "codedark"
       colorscheme solarized8
-      "let g:airline_theme='solarized'
+      let g:airline_theme='solarized'
       "let g:airline_solarized_bg='light'
       let g:tcc="solarized8"
     endif 

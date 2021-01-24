@@ -19,8 +19,10 @@ else
   let g:filemanager='nerdtree'
 endif
 "force make coc and defx
-  let g:filemanager='defx'
-  let g:completor='coc'
+let g:filemanager='defx'
+let g:completor='coc'
+"let g:vimcode_theme='codedark'
+let g:vimcode_theme='onedark'
 "let g:completor='deoplete'
 "let g:completor='LanguageClient-neovim'
 "let g:completor='completor'

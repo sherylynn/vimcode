@@ -93,11 +93,14 @@ Plug 'junegunn/fzf.vim'
 "Plug 'lifepillar/vim-solarized8'
 "vscode dark
 "原作者的不能使用了 发现换一个人也不行 原来是colorschemey应该放外面
-Plug 'tomasiser/vim-code-dark'
+if g:vimcode_theme=="codedark"
+  Plug 'tomasiser/vim-code-dark'
+else
+  Plug 'rafi/awesome-vim-colorschemes'
+endif
 "Plug 'dunstontc/vim-code-dark'
 "Plug 'DNonov/vim-code-dark'
 "Plug 'sherylynn/vim-code-dark'
-"Plug 'rafi/awesome-vim-colorschemes'
 
 "Plug 'dunstontc/vim-vscode-theme'
 "colorscheme dark_plus
