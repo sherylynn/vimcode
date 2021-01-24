@@ -1,4 +1,4 @@
-autoload/
+#autoload/
 plugged/
 node_modules/
 *.swp
