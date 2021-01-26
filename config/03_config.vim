@@ -92,6 +92,49 @@ elseif g:filemanager=='defx'
   nnoremap <silent> <Leader>wq :Defx<CR>
   nnoremap <silent> <Leader>ft :Defx<CR>
   nnoremap <Leader>1 :Defx<CR>
+elseif g:filemanager=='coc-explorer'
+  let g:coc_explorer_global_presets = {
+  \   '.vim': {
+  \     'root-uri': '~/.vim',
+  \   },
+  \   'cocConfig': {
+  \      'root-uri': '~/.config/coc',
+  \   },
+  \   'tab': {
+  \     'position': 'tab',
+  \     'quit-on-open': v:true,
+  \   },
+  \   'floating': {
+  \     'position': 'floating',
+  \     'open-action-strategy': 'sourceWindow',
+  \   },
+  \   'floatingTop': {
+  \     'position': 'floating',
+  \     'floating-position': 'center-top',
+  \     'open-action-strategy': 'sourceWindow',
+  \   },
+  \   'floatingLeftside': {
+  \     'position': 'floating',
+  \     'floating-position': 'left-center',
+  \     'floating-width': 50,
+  \     'open-action-strategy': 'sourceWindow',
+  \   },
+  \   'floatingRightside': {
+  \     'position': 'floating',
+  \     'floating-position': 'right-center',
+  \     'floating-width': 50,
+  \     'open-action-strategy': 'sourceWindow',
+  \   },
+  \   'simplify': {
+  \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+  \   },
+  \   'buffer': {
+  \     'sources': [{'name': 'buffer', 'expand': v:true}]
+  \   },
+  \ }
+  nnoremap <silent> <Leader>wq :CocCommand explorer --preset floatingLeftside<CR>
+  nnoremap <silent> <Leader>ft :CocCommand explorer --preset floatingLeftside<CR>
+  nnoremap <Leader>1 :CocCommand explorer --preset buffer<CR>
 endif
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
@@ -471,8 +514,9 @@ endif
 
 
 if g:completor=='coc'
-  	#call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier')
-  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp' ]
+"  	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier')
+  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-tabnine', 'coc-go','coc-cmake','coc-explorer','coc-highlight' ]
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
   autocmd FileType json syntax match Comment +\/\/.\+$+
   if executable('go')
     if executable('gopls')
@@ -492,6 +536,7 @@ call coc#config('languageserver', {
 		\   "filetypes": ["c", "cpp", "objc", "objcpp"]
 		\ }
 		\})
+call coc#config('coc.preferences.formatOnSaveFiletypes', ['css','markdown','javascript','typescript'])
   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
   let g:lightline={

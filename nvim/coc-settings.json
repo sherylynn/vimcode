@@ -10,10 +10,10 @@
          //}
        //}
     //},
-    "golang": {
-      "command":"gopls",
-      "rootPatterns":["go.mod",".vim/",".git/",".hg/"],
-      "filetypes":["go"]
+    //"golang": {
+    //"command":"gopls",
+    //"rootPatterns":["go.mod",".vim/",".git/",".hg/"],
+    //"filetypes":["go"]
 
       //"command": "bingo",
       //"args": ["--diagnostics-style=instant"],
@@ -27,7 +27,7 @@
       //  "diagnosticsEnabled": true,
       //  "lintTool": "golint"
       //}
-    }
+    //}
   },
   "diagnostic.refreshOnInsertMode": true
 } 

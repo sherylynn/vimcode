@@ -19,7 +19,8 @@ else
   let g:filemanager='nerdtree'
 endif
 "force make coc and defx
-let g:filemanager='defx'
+"let g:filemanager='defx'
+let g:filemanager='coc-explorer'
 let g:completor='coc'
 let g:coc_disable_startup_warning = 1
 let g:vimcode_theme='codedark'

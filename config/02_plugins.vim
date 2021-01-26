@@ -64,9 +64,6 @@ endif
 "Bundle 'minibufexpl.vim'
 "------------------------------web-----------------------
 "Plug 'https://github.com/burnettk/vim-angular.git'
-"css color
-"Plug 'ap/vim-css-color',{'for':['html','javascript']}
-Plug 'ap/vim-css-color'
 "zencoding 改名为了 Emmet
 
 "css私有前缀
@@ -119,8 +116,6 @@ endif
 
 
 
-" {}
-Plug 'jiangmiao/auto-pairs'
 "</>
 Plug 'alvan/vim-closetag'
 "beauty
@@ -331,6 +326,11 @@ else
   "微软typerscript支持，高亮
   "Plug 'leafgarland/typescript-vim',{'for':'ts'}
   Plug 'leafgarland/typescript-vim'
+  " {}
+  Plug 'jiangmiao/auto-pairs'
+  "css color
+  "Plug 'ap/vim-css-color',{'for':['html','javascript']}
+  Plug 'ap/vim-css-color'
 endif
 if g:completor=='LanguageClient-neovim'
   Plug 'autozimu/LanguageClient-neovim', {
