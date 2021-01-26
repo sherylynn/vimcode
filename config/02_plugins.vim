@@ -61,8 +61,6 @@ elseif g:filemanager=='defx'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 endif
-"浏览树显示git状态插件
-Plug 'vim-scripts/Tagbar'
 "Bundle 'minibufexpl.vim'
 "------------------------------web-----------------------
 "Plug 'https://github.com/burnettk/vim-angular.git'
@@ -109,9 +107,6 @@ endif
 "Plug 'MattesGroeger/vim-bookmarks'
 
 
-"Bundle 'JavaScript-syntax'
-"Plug 'pangloss/vim-javascript',{'for':['html','javascript']}
-Plug 'pangloss/vim-javascript'
 
 
 "Plug 'terryma/vim-multiple-cursors'
@@ -130,9 +125,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 "beauty
 Plug 'vim-scripts/matchit.zip'
+"高亮
+Plug 'sheerun/vim-polyglot'
 "git 插件
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+"浏览树显示git状态插件
+Plug 'preservim/Tagbar'
 "增强了搜索，需要映射键位
 Plug 'haya14busa/incsearch.vim'
 "v模式下选词 +键扩展 -键缩减
@@ -151,20 +150,8 @@ Plug 'chemzqm/wxapp.vim'
 Plug 'luochen1990/rainbow'
 "插件在切换buffer时有问题，所以设定成关闭然后手动呼唤
 let g:rainbow_active=1
-"markdown
-Plug 'tpope/vim-markdown',{'for':'markdown'}
-"markdown preview
-Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
-Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
-"formate js
-"Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
-Plug 'prettier/vim-prettier', { 'do': 'npm install'}
 "中文排版规范化用法  :PanGu
 Plug 'hotoo/pangu.vim'
-"语言插件
-"微软typerscript支持，高亮
-"Plug 'leafgarland/typescript-vim',{'for':'ts'}
-Plug 'leafgarland/typescript-vim'
 "异步补全，需要python3
 if g:completor=="deoplete"
   if has('nvim')
@@ -280,7 +267,7 @@ endif
 if g:completor=='autocomplpop'
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'vim-scripts/AutoComplPop'
-  autocomplpop 设置
+"  autocomplpop 设置
   let g:AutoComplPop_IgnoreCaseOption=1
   function! InsertTabWrapper()
     let col=col('.')-1
@@ -328,6 +315,22 @@ if g:completor=='coc'
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
   Plug 'neoclide/coc.nvim',{'branch':'release'}
+else
+  "formate js
+  "Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
+  Plug 'prettier/vim-prettier', { 'do': 'npm install'}
+  "markdown
+  Plug 'tpope/vim-markdown',{'for':'markdown'}
+  "markdown preview
+  Plug 'iamcco/mathjax-support-for-mkdp',{'for':'markdown'}
+  Plug 'iamcco/markdown-preview.vim',{'for':'markdown'}
+  "Bundle 'JavaScript-syntax'
+  "Plug 'pangloss/vim-javascript',{'for':['html','javascript']}
+  Plug 'pangloss/vim-javascript'
+  "语言插件
+  "微软typerscript支持，高亮
+  "Plug 'leafgarland/typescript-vim',{'for':'ts'}
+  Plug 'leafgarland/typescript-vim'
 endif
 if g:completor=='LanguageClient-neovim'
   Plug 'autozimu/LanguageClient-neovim', {
