@@ -134,7 +134,7 @@ elseif g:filemanager=='coc-explorer'
   \ }
   nnoremap <silent> <Leader>wq :CocCommand explorer --preset floatingLeftside<CR>
   nnoremap <silent> <Leader>ft :CocCommand explorer --preset floatingLeftside<CR>
-  nnoremap <Leader>1 :CocCommand explorer --preset buffer<CR>
+  nnoremap <Leader>1 :CocCommand explorer --preset floatingLeftside<CR>
 endif
 nnoremap <silent> <Leader>ww :call asyncrun#quickfix_toggle(8)<cr>
 nnoremap <silent> <Leader>we :TagbarToggle<cr>
