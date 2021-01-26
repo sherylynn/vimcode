@@ -515,7 +515,7 @@ endif
 
 if g:completor=='coc'
 "  	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier')
-  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-tabnine', 'coc-go','coc-cmake','coc-explorer','coc-highlight' ]
+  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-tabnine', 'coc-go','coc-cmake','coc-highlight' ]
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   autocmd FileType json syntax match Comment +\/\/.\+$+
   if executable('go')
