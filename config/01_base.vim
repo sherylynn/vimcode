@@ -9,15 +9,12 @@ elseif has('job')
 else
   let g:completor='autocomplpop'
 endif
-if has('nvim')
-  if has('python3')
-  else
-    !pip3 install pynvim --user
-  endif
-  let g:filemanager='defx'
+if has('python3')
 else
-  let g:filemanager='nerdtree'
+  !pip3 install pynvim --user
 endif
+let g:filemanager='defx'
+"let g:filemanager='nerdtree'
 "force make coc and defx
 "let g:filemanager='defx'
 "let g:filemanager='coc-explorer'
