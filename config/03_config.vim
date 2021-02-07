@@ -82,7 +82,7 @@ nnoremap <silent> <Leader>f :Files<CR>
 "nnoremap <silent> <Leader>ft :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>g :Ag<CR>
 "leader search help
-nnoremap <silent> <Leader>sh yiw:h <C-R>"<CR>
+nnoremap <silent> <Leader>* yiw:h <C-R>"<CR>
 "mobile leader>t 已经被test占用,windows qwe 代表左中右
 if g:filemanager=='nerdtree'
   nnoremap <silent> <Leader>wq :NERDTreeToggle<CR>
@@ -516,10 +516,20 @@ endif
 if g:completor=='coc'
 "  	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier')
   if system('arch') == '*amd64*'
-    let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-tabnine', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer' ]
-  else
-    let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer' ]
+  	call coc#add_extension('coc-tabnine')
   endif
+  if executable("clangd")
+  	call coc#add_extension('coc-clangd')
+  elseif executable('ccls')
+    call coc#config('languageserver', {
+        \ 'ccls': {
+        \   "command": "ccls",
+        \   "trace.server": "verbose",
+        \   "filetypes": ["c", "cpp", "objc", "objcpp"]
+        \ }
+        \})
+  endif
+  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-sh', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer', 'coc-spell-checker' ]
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   autocmd FileType json syntax match Comment +\/\/.\+$+
   if executable('go')
@@ -533,26 +543,19 @@ if g:completor=='coc'
   endif
   "coc airline
 "  let g:airline_extension=['branch','hunks','coc']
-call coc#config('languageserver', {
-		\ 'ccls': {
-		\   "command": "ccls",
-		\   "trace.server": "verbose",
-		\   "filetypes": ["c", "cpp", "objc", "objcpp"]
-		\ }
-		\})
-call coc#config('coc.preferences.formatOnSaveFiletypes', ['css','markdown','javascript','typescript'])
-  let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-  let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-  let g:lightline={
-        \'colorscheme':'wombat',
-        \'active':{
-        \  'left':[['mode','paste'],
-        \    ['cocstatus','readonly','filename','modified']]
-        \},
-        \'component_function':{
-        \  'cocstatus':'coc#status'
-        \}
-        \}
+  call coc#config('coc.preferences.formatOnSaveFiletypes', ['css','markdown','javascript','typescript'])
+    let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+    let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+    let g:lightline={
+          \'colorscheme':'wombat',
+          \'active':{
+          \  'left':[['mode','paste'],
+          \    ['cocstatus','readonly','filename','modified']]
+          \},
+          \'component_function':{
+          \  'cocstatus':'coc#status'
+          \}
+          \}
 endif
 if g:completor=='asyncomplete'
   let g:lsp_signs_enabled = 1         " enable signs
