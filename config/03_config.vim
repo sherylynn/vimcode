@@ -535,7 +535,8 @@ if g:completor=='coc'
         \ }
         \})
   endif
-  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-sh', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer', 'coc-spell-checker' ]
+  let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-sh', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer',  ]
+  "remove 'coc-spell-checker' as to much warning
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   autocmd FileType json syntax match Comment +\/\/.\+$+
   if executable('go')
