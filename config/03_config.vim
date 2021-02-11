@@ -515,26 +515,6 @@ endif
 
 if g:completor=='coc'
 "  	call coc#add_extension('coc-json', 'coc-tsserver', 'coc-java', 'coc-python', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier')
-  if system('arch') == '*amd64*'
-  	call coc#add_extension('coc-tabnine')
-  endif
-  if executable("clangd")
-  	call coc#add_extension('coc-clangd')
-  elseif executable('ccls')
-    call coc#config('languageserver', {
-        \ 'ccls': {
-        \   "command": "ccls",
-        \   "trace.server": "verbose",
-        \   "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-        \   "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-        \   "initializationOptions": {
-        \     "cache": {
-        \       "directory": "/tmp/ccls"
-        \     }
-        \   }
-        \ }
-        \})
-  endif
   let g:coc_global_extensions=['coc-json', 'coc-tsserver', 'coc-java', 'coc-sh', 'coc-pyright', 'coc-vimlsp', 'coc-git', 'coc-yaml', 'coc-markdownlint', 'coc-prettier', 'coc-omnisharp', 'coc-pairs', 'coc-go','coc-cmake','coc-highlight', 'coc-explorer',  ]
   "remove 'coc-spell-checker' as to much warning
   command! -nargs=0 Prettier :CocCommand prettier.formatFile

@@ -310,6 +310,29 @@ if g:completor=='coc'
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':{ -> coc#util#install() }}
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
   Plug 'neoclide/coc.nvim',{'branch':'release'}
+" must singe quote for expr
+  if system('arch') =~ '[aarch64|arm64|armhf]' && system('platform') =~ 'linux'
+  else
+    Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
+  endif
+  if executable("clangd")
+"  	call coc#add_extension('coc-clangd')
+    Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile','for':['c', 'cc', 'cpp', 'c++', 'objc', 'objcpp']}
+  elseif executable('ccls')
+    call coc#config('languageserver', {
+        \ 'ccls': {
+        \   "command": "ccls",
+        \   "trace.server": "verbose",
+        \   "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+        \   "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+        \   "initializationOptions": {
+        \     "cache": {
+        \       "directory": "/tmp/ccls"
+        \     }
+        \   }
+        \ }
+        \})
+  endif
 else
   "formate js
   "Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
