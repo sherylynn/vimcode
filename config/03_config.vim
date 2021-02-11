@@ -519,6 +519,22 @@ if g:completor=='coc'
   "remove 'coc-spell-checker' as to much warning
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
   autocmd FileType json syntax match Comment +\/\/.\+$+
+
+  if executable('ccls')
+    call coc#config('languageserver', {
+        \ 'ccls': {
+        \   "command": "ccls",
+        \   "trace.server": "verbose",
+        \   "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+        \   "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+        \   "initializationOptions": {
+        \     "cache": {
+        \       "directory": "/tmp/ccls"
+        \     }
+        \   }
+        \ }
+        \})
+  endif
   if executable('go')
     if executable('gopls')
     else
