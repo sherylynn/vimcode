@@ -311,7 +311,8 @@ if g:completor=='coc'
 "  Plug 'neoclide/coc.nvim',{'tag':'*','do':'yarn install&&npm i -g vim-node-rpc'}
   Plug 'neoclide/coc.nvim',{'branch':'release'}
 " must singe quote for expr
-  if system('arch') =~ '[aarch64|arm64|armhf]' && system('platform') =~ 'linux'
+  if system('arch') =~ 'aarch64\|arm64\|armhf' && system('platform') =~ 'linux'
+    echom "arm cpu && linux is lack of tabnine"
   else
     Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
   endif
