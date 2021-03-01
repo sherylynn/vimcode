@@ -8,3 +8,4 @@ init.vim
 #.config
 configstore
 htop
+coc/*
