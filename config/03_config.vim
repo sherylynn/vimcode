@@ -66,11 +66,13 @@ nnoremap <leader>tb :call ToggleBG()<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>tc :call ToggleCC()<CR>
 inoremap jk <ESC>
+inoremap <C-g> <ESC>
 "删除了半天的插件后得出的结论
 "普通模式会对j进行一个判断，判断后面没跟k才会输出j，结果就造成了看上去往下走的时候最后一个键卡顿的效果
 "map jk  <ESC>
 "命令模式还是可以用
 cnoremap jk <ESC>
+cnoremap <C-g> <ESC>
 "emmet 设置
 
 let g:user_emmet_expandabbr_key = '<C-Y>'
@@ -142,6 +144,7 @@ nnoremap <silent> <Leader>we :TagbarToggle<cr>
 "if has terminal
 if has('terminal') || has('nvim')
   tnoremap jk <c-\><c-n>
+  tnoremap <C-g> <c-\><c-n>
   nnoremap <silent><leader>' :terminal<CR>
   nnoremap <silent><leader>tt :terminal<CR>
 endif
