@@ -35,6 +35,7 @@ let g:vimcode_theme='codedark'
 let g:vim_lsp_go='gopls'
 "加载路径
 let $VIMHOME=expand("$HOME/vimcode")
+let $ORGHOME=expand("$HOME/work")
 let $BUNDLE =expand("$VIMHOME/plugged")
 let $PLUG_DIR=expand("$VIMHOME/autoload")
 let $PLUG_VIM=expand("$PLUG_DIR/plug.vim")

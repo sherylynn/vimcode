@@ -4,6 +4,7 @@ let g:mapleader = ' '
 " Make sure you use single quotes
 "----------------------------------------
 Plug 'jceb/vim-orgmode'
+Plug 'mattn/calendar-vim'
 "Plug 'akstrfn/vim-orgmode'
 "augroup orgmode
 "  au! BufRead,BufWrite,BufWritePost,BufNewFile *.org

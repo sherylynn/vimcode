@@ -66,13 +66,11 @@ nnoremap <leader>tb :call ToggleBG()<CR>
 nnoremap <leader>tr :RainbowToggle<CR>
 nnoremap <leader>tc :call ToggleCC()<CR>
 inoremap jk <ESC>
-inoremap <C-g> <ESC>
 "删除了半天的插件后得出的结论
 "普通模式会对j进行一个判断，判断后面没跟k才会输出j，结果就造成了看上去往下走的时候最后一个键卡顿的效果
 "map jk  <ESC>
 "命令模式还是可以用
 cnoremap jk <ESC>
-cnoremap <C-g> <ESC>
 "emmet 设置
 
 let g:user_emmet_expandabbr_key = '<C-Y>'
@@ -155,6 +153,9 @@ nnoremap <silent> <Leader>ze :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>ee :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>zga :call Edit_vimcode()<cr>
 nnoremap <silent> <Leader>zr :call Reload_vimcode()<cr>
+nnoremap <silent> <Leader>zo :call Edit_org()<cr>
+inoremap <C-g> <ESC>
+cnoremap <C-g> <ESC>
 "edit load editfile
 nnoremap <silent> <Leader>el :source %<cr>
 "add comment to vimrc
@@ -405,6 +406,12 @@ func Edit_vimcode()
   silent :vs $VIMHOME/config/03_config.vim
   wincmd j
   silent :vs $VIMHOME/nvim/coc-settings.json
+endfunc
+endif
+if !exists("*Edit_org")
+func Edit_org()
+  :lcd $ORGHOME
+  :tabedit $ORGHOME/todo.org
 endfunc
 endif
 if !exists("*Cd_source")
