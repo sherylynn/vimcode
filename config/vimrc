@@ -1,3 +1,6 @@
+if has('nvim')
+  "source $HOME/vimcode/config/org.vim
+endif
 source $HOME/vimcode/config/01_base.vim
 source $HOME/vimcode/config/02_plugins.vim
 source $HOME/vimcode/config/03_config.vim

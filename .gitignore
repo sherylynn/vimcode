@@ -9,3 +9,4 @@ init.vim
 configstore
 htop
 coc/*
+.DS_Store
