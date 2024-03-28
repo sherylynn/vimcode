@@ -3,7 +3,18 @@ let mapleader = ' '
 let g:mapleader = ' '
 " Make sure you use single quotes
 "----------------------------------------
-Plug 'jceb/vim-orgmode'
+"function! NeorgHook()
+"  Neorg sync-parser
+"  help neorg-breaking-changes
+"endfunction
+
+if has('nvim')
+  "Plug 'nvim-neorg/neorg', { 'do': { -> NeorgHook() } }
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-orgmode/orgmode'
+else
+  Plug 'jceb/vim-orgmode'
+endif
 Plug 'mattn/calendar-vim'
 "Plug 'akstrfn/vim-orgmode'
 "augroup orgmode

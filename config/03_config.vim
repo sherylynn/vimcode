@@ -235,13 +235,13 @@ set nolist
 " gp 推送
 nnoremap gcm :AsyncRun git checkout master<CR>
 nnoremap gc. :AsyncRun git checkout .<CR>
-nnoremap gca :Gcommit -a -v<CR>
+nnoremap gca :Git commit -a -v<CR>
 nnoremap gcf :AsyncRun git commit -m "fix" -a<CR>
 "nnoremap gp  :Gpush <CR>
 "git push 这步阻塞太痛苦了，改成异步的
 nnoremap gr :bufdo :e!<CR>
 nnoremap gl :AsyncRun git pull<CR>
-nnoremap gs :Gstatus<CR>
+nnoremap gs :Git<CR>
 nnoremap gp :AsyncRun git push<CR>
 "当有消息时自动弹出消息窗
 augroup vimrc
