@@ -332,6 +332,9 @@ if g:completor=='coc'
 "  	call coc#add_extension('coc-clangd')
     Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile','for':['c', 'cc', 'cpp', 'c++', 'objc', 'objcpp']}
   endif
+  if executable("R")
+    Plug 'jalvesaq/Nvim-R'
+  endif
 else
   "formate js
   "Plug 'prettier/vim-prettier', { 'do': 'npm install','for':'javascript' }
